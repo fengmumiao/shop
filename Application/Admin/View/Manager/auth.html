@@ -1,0 +1,56 @@
+<extend name="public:layout" />
+<block name="position">
+管理员 >> 管理员权限设置
+</block>
+<block name="right">
+<form action="__CONTROLLER__/setAuth" method="post">
+<table class="table table-hover table-striped table-bordered">
+<!-- <foreach name="arr" item="vo"> -->
+	<tr>
+		<td>
+
+			审核管理：&nbsp;&nbsp;
+			<!-- <if condition="$vo.rules eq '19,20,28'" > -->
+				<input type="checkbox" checked="checked" name="auth[]" value="1,2,3,4">&nbsp;&nbsp;审核商品
+			<!-- <input type="checkbox" name="auth[]" value="1,2,3,4">&nbsp;&nbsp;审核商品 -->
+			<!-- </if> -->
+			
+			<input type="checkbox" name="auth[]" value="5,6,7">&nbsp;&nbsp;审核闪团
+			<input type="checkbox" name="auth[]" value="8,9,10,11">&nbsp;&nbsp;审核商铺
+		</td>		
+	</tr>
+	<tr>
+		<td>
+			管理员：&nbsp;&nbsp;
+			<input type="checkbox" checked="checked" name="auth[]" value="12,13">&nbsp;&nbsp;修改密码
+			<input type="checkbox" name="auth[]" value="14">&nbsp;&nbsp;退出登录
+			<input type="checkbox" name="auth[]" value="15,16,38">&nbsp;&nbsp;增加管理员
+			<input type="checkbox" name="auth[]" value="17,18">&nbsp;&nbsp;管理员状态
+		</td>
+	</tr>
+	<tr>
+		<td>
+			会员管理：&nbsp;&nbsp;
+			<input type="checkbox" name="auth[]" value="19,20,28">&nbsp;&nbsp;增加会员
+			<input type="checkbox" name="auth[]" value="21,22,23,24">&nbsp;&nbsp;修改会员基本信息&nbsp;&nbsp;
+			<input type="checkbox" name="auth[]" value="25">&nbsp;&nbsp;删除会员
+			<input type="checkbox" name="auth[]" value="26,27">&nbsp;&nbsp;禁用会员
+		</td>
+	</tr>
+	<tr>
+		<td>
+			友情链接：&nbsp;&nbsp;
+			<input type="checkbox" name="auth[]" value="30">&nbsp;&nbsp;查看链接
+			<input type="checkbox" name="auth[]" value="31,32">&nbsp;&nbsp;修改链接
+			<input type="checkbox" name="auth[]" value="33">&nbsp;&nbsp;删除链接
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<button type="submit" class="btn btn-primary">提交</button>
+		</td>
+	</tr>
+	<!-- </foreach> -->
+	</table>
+</form>
+</block>

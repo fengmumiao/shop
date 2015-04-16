@@ -1,0 +1,122 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+ <block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li class="active"><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li>
+			<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+
+<block name="content">
+	
+			<br/>
+				<h3>商品管理</h3>
+				<form action="__CONTROLLER__/searchGoods" method="post">
+			    <div class="col-sm-6">
+			      <input class="form-control" type="text" id="formGroupInputLarge" placeholder="输入商品编号" name="search">
+			    </div>
+			    <button class="btn btn-primary" type="submit">搜索</button>
+			</form>
+     <br/>
+			<table class="table table-hover" >
+				<thead>
+				<tr bgcolor="#cfe4e5" align="center">
+				<td>商品编号</td>
+				<td>商品名称</td>
+				<td>市场价</td>
+				<td>打折价</td>
+				<td>点击次数</td>
+				<td>添加时间</td>
+				<td>审核状态</td>
+				<!-- <td>选项</td> -->
+				<td>操作</td>
+				</tr>
+				</thead>
+				<tbody>
+				
+			<foreach name="list" item="vo">
+				<tr align="center">
+				<td><a href="__MODULE__/goodsAction/goodsIntro?id={$vo.id}"><b>{$vo.goodsnumber}</b></a></td>
+				<td title="{$vo.intro}">{$vo.intro|mb_substr=0,6,'utf-8'}</td>
+				
+				<td class="center">{$vo.price}</td>
+				<td class="center">{$vo.discount}</td>
+				<td class="center">{$vo.clicknum}</td>
+				<td class="center">{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+				<switch name="vo.state">    
+					<case value="1"><php>$state="审核通过";</php></case>    
+					<case value="2"><php>$state="等待审核";</php></case>    
+					<case value="3"><php>$state="审核失败";</php></case>    
+					
+				</switch>
+				<td class="center">
+				<!-- 2未审核  1通过 3失败  -->
+				<kbd><php>echo $state;</php></kbd>
+				</td>
+				<!-- <td><a><input type="checkbox" name="ids[]" value="{$vo.id}"></a></td> -->
+				<td><a href="__CONTROLLER__/delGoods?id={$vo.id}" class="btn btn-danger">删除</a> <a href="__MODULE__/GoodsAction/goodsCont?goodsid={$vo.id}" class="btn btn-success">添加其他颜色</a>
+				</td>
+				</tr>
+
+			</foreach>	
+			
+				</tbody>
+				<!-- <tr align="right"><td colspan="8">
+					<button onclick="selected(1)" class="btn btn-warning">全选</button>
+	        		<button onclick="selected(2)" class="btn btn-success">反选</button>
+	        		<button onclick="selected(3)" class="btn btn-primary">全不选</button>
+	        	</td>
+	        	<td align="center">
+	        		<button class="btn btn-danger">删除所选</button>
+        		</td></tr> -->
+				<tr><td colspan="9" align="center">{$page}</td></tr>	
+					
+			</table>
+					
+				
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2012 &copy; Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+					</div>
+				</div>
+		<script type="text/javascript" charset="utf-8">
+
+
+            //得到所有的input 表单
+            // var inps = document.getElementsByTagName("input");
+            // //单击按钮时会调用这个函数
+            // function selected(n){
+            //     //如果函数的参数为1，则为全选
+            //     if(1 == n){
+            //         //遍历这个inps数组，每次都把一个input表单的属性checked赋值为真
+            //         for(var i in inps){
+            //             inps[i].checked = true;
+            //         }
+            //     }
+            //     //如果函数的参数为2，则为反选
+            //     if(2 == n){
+            //         //遍历所有的表单。选得到每个表单的checked的属性值，并取反。再赋值给checked属性
+            //         for(var i in inps){
+            //             inps[i].checked = !inps[i].checked;
+            //         }
+            //     }
+            //     //如果函数的参数为3，则为全不选
+            //     if(3 == n){
+            //         //遍历所有的表单，把所有的表单的checked属性赋值为false
+            //         for(var i in inps){
+            //             inps[i].checked = false;
+            //         }
+            //     }
+            // }
+    </script>
+</block>

@@ -1,0 +1,87 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+ <block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li class="active"><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li>
+			<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+
+<block name="content">
+	
+			<br/>
+				<h3>商品管理</h3>
+				
+				<center>
+					
+					<div class="col-sm-6">
+			     		<a href="goodsMana"><button class="btn btn-primary" type="submit">返回商品列表</button></a>
+			    
+			    	</div>
+			    
+				</center>
+			    
+			
+    
+			<table class="table table-hover" >
+				<thead>
+				<tr bgcolor="#cfe4e5" align="center">
+				<td>商品编号</td>
+				<td>商品名称</td>
+				<td>市场价</td>
+				<td>打折价</td>
+				<td>点击次数</td>
+				<td>添加时间</td>
+				<td>审核状态</td>
+				<td>操作</td>
+				</tr>
+				</thead>
+				<tbody>
+				
+			<foreach name="data" item="vo">
+				<tr align="center">
+				<td><a href="__MODULE__/goodsAction/goodsIntro?id={$vo.id}"><b>{$vo.goodsnumber}</b></a></td>
+				<td>{$vo.goods}</td>
+				
+				<td class="center">{$vo.price}</td>
+				<td class="center">{$vo.discount}</td>
+				<td class="center">{$vo.clicknum}</td>
+				<td class="center">{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+				<switch name="vo.state">    
+					<case value="1"><php>$state="审核通过";</php></case>    
+					<case value="2"><php>$state="等待审核";</php></case>    
+					<case value="3"><php>$state="审核失败";</php></case>    
+					
+				</switch>
+				<td class="center">
+				<!-- 2未审核  1通过 3失败  -->
+				<kbd><php>echo $state;</php></kbd>
+				</td>
+				<!-- <td><a><input type="checkbox" name="ids[]" value="{$vo.id}"></a></td> -->
+				<td><a href="__CONTROLLER__/delGoods?id={$vo.id}" class="btn btn-danger">删除</a> <a href="__MODULE__/GoodsAction/goodsCont?goodsid={$vo.id}" class="btn btn-success">添加其他颜色</a>
+				</td>
+				</tr>
+
+			</foreach>	
+			
+				</tbody>	
+			</table>
+					
+				
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2012 &copy; Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+					</div>
+				</div>
+		
+</block>

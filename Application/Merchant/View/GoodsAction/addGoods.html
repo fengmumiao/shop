@@ -1,0 +1,201 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+
+<block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i><span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li class="active"><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+		
+		</ul>
+	</li>
+</block>
+
+<block name="content">
+<br/>
+
+<script type="text/javascript">
+//js验证表单
+  var gets = true;//是否让表单提交
+  $(function(){
+//当输入框失去焦点的时候，需要执行的方法
+  $("input[name=goods]").blur(function(){doGoods();});
+  $("input[textarea=intro]").blur(function(){doIntro();});
+  $("input[name=price]").blur(function(){doPrice();});
+  $("input[name=discount]").blur(function(){doDiscount();});
+  $("textarea[name=content]").blur(function(){doContent();});
+
+});
+
+// 商品名的验证
+  function doGoods(){
+    var t = $("input[name=goods]");
+    var span = t.next();
+    if(/^[a-zA-Z\u4e00-\u9fa5]{3,12}$/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+      span.html("使用汉字、字母，长度在3-12之间").css({color:"red",fontSize:"12px"});
+      return false;
+
+    }
+  }
+// 简介的验证
+  function doIntro(){
+    var t = $("textarea[name=intro]");
+    var span = t.next();
+    if(t.val() == '' || t.val().length<5){
+      span.html("详情不能为空并且不能少于5字符,严重审核").css({color:"red",fontSize:"12px"});
+      return false;
+    }else{
+      return true;
+    }
+ 
+  
+  }
+// 价格的验证
+  function doPrice(){
+    var t = $("input[name=price]");
+    var span = t.next();
+    if(/\d/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+    	span.html("必须为数字").css({color:"red",fontSize:"12px"});
+      return false;
+    }
+  }
+  // 打折价的验证
+   function doDiscount(){
+    var t = $("input[name=discount]");
+    var span = t.next();
+    if(/\d/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+    	span.html("必须为数字").css({color:"red",fontSize:"12px"});
+      return false;
+    }
+  }
+
+  // 商品详情的验证
+  function doContent(){
+    var t = $("textarea[name=content]");
+    var span = t.next();
+    if(t.val() == '' || t.val().length<20){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return false;
+    }else{
+      return true;
+    }
+ 
+  
+  }
+// 数据提交的时候执行的方法
+  function doTable(){
+    var goods = doGoods();
+    var intro = doIntro();
+   
+    var price = doPrice();
+    var discount = doDiscount();
+    var content = doContent();
+  
+    if(goods&&price&&discount){
+      return true;
+    }else{
+      return false;
+
+    }
+  }
+
+
+
+</script>
+
+<h2>添加商品</h2>
+<form action="__CONTROLLER__/goodsadd" method="post" onsubmit="return doTable()">
+<table class="table table-bordered table-hover">
+	<tr>
+		<td width="20%">商家品牌：</td>
+		<td width="80%" name="brand">{$brand[0]['brand']}</td>
+	</tr>
+	<tr>
+		<td>商品分类</td>
+		<td>
+			大类: <select id="firstSort" name="first">
+        <option>--请选择--</option> 
+        <foreach name="row" item="vo">
+          <option value="{$vo.id}">{$vo.name}</option>
+        </foreach>
+      </select>
+			小类: <select id="second" name="second">
+        <option>--请选择--</option>
+          <foreach name="second" item="vos">
+          <option value="{$vo.id}">{$vo.name}</option>   
+      </select>
+			子类: <select id="third" name="typeid">
+      
+        <option>--请选择--</option>
+      <select>
+		</td>
+	</tr>
+	<tr>
+		<td>商品名称：</td>
+		<td><input type="text" name="goods"><span></span></td>
+	</tr>
+	<tr>
+		<td>商品简介：</td>
+		<td><textarea name="intro"></textarea><span></span></td>
+	</tr>
+	
+	
+	<tr>
+		<td>价格:</td>
+		<td>市场价：<input type="text" name="price" placeholder="请精确到俩位小数"><span></span>打折价：<input type="text" name="discount" placeholder="请精确到俩位小数"><span></span></td>
+	</tr>
+	
+	<tr>
+		<td>商品详情:</td>
+		<td>
+			<textarea name="content" id="content"  style="width:80%;height:250px;visibility:hidden;" class="required"></textarea><span></span>
+		</td>
+	</tr>
+	
+	<tr align="center">
+	<td colspan="2">
+		<button type="submit" class=" btn btn-danger " >请添加商品属性等具体信息</button>
+		</td>
+	</tr>
+</table>
+</form>
+<script type="text/javascript">
+  var second = document.getElementById("second");
+  var third = document.getElementById("third")
+  $('#firstSort').change(function(data){
+    var val = $('#firstSort').val();
+    $.post('__CONTROLLER__/selectSecond',{'pid':val},function(data){
+      var datas = eval("("+data+")");
+      var str = "<option>请选择</option>";
+        for(var i in datas){
+          str = str + "<option value="+datas[i]['id']+">"+datas[i]['name']+"</option>";
+        }
+        second.innerHTML=str;
+    });
+  })
+  $('#second').change(function(data){
+  var valsecond = $("#second").val();
+    $.post('__CONTROLLER__/selectSecond',{'pid':valsecond},function(data){
+      var datas = eval("("+data+")");
+      var str = "<option>请选择</option>";
+        for(var i in datas){
+          str = str + "<option value="+datas[i]['id']+">"+datas[i]['name']+"</option>";
+        }
+        third.innerHTML=str;
+    });
+  })
+</script>
+</block>

@@ -1,0 +1,63 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+审核管理 >> 未审核秒杀列表
+</block>
+<block name="right">
+<table  class="table table-striped">
+	<tr>
+		<th>商品编号</th>
+		<th>商品名</th>
+		<th>商品缩略图</th>
+		<th>所属品牌</th>
+		<th>商品单价</th>
+		<th>秒杀价</th>
+		<th>库存</th>
+		<th>操作</th>
+	</tr>
+	<tr>
+		<td>100123</td>
+		<td><a href="__MODULE__/Audit/seckill">懒人鞋</a></td>
+		<td><img src="__PUBLIC__/Admin/images/main_05.gif"></td>
+		<td>李宁</td>
+		<td>123</td>
+		<td>5</td>
+		<td>23</td>
+		<td>
+			<a href=""><button class="btn btn-primary">通过</button></a>
+			<a href=""><button class="btn btn-primary btn-danger">不通过</button></a>
+		</td>
+	</tr>
+	<tr>
+		<td>100123</td>
+		<td><a href="__MODULE__/Audit/seckill">懒人鞋</a></td>
+		<td><img src="__PUBLIC__/Admin/images/main_05.gif"></td>
+		<td>李宁</td>
+		<td>123</td>
+		<td>5</td>
+		<td>23</td>
+		<td>
+			<a href=""><button class="btn btn-primary">通过</button></a>
+			<a href=""><button class="btn btn-primary btn-danger">不通过</button></a>
+		</td>
+	</tr>
+	<tr>
+		<td>100123</td>
+		<td><a href="__MODULE__/Audit/seckill">懒人鞋</a></td>
+		<td><img src="__PUBLIC__/Admin/images/main_05.gif"></td>
+		<td>李宁</td>
+		<td>123</td>
+		<td>5</td>
+		<td>23</td>
+		<td>
+			<a href=""><button class="btn btn-primary">通过</button></a>
+			<a href=""><button class="btn btn-primary btn-danger">不通过</button></a>
+		</td>
+	</tr>
+</table>
+</block>

@@ -1,0 +1,42 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+订单管理 >> 订单详情
+</block>
+<block name="right">
+<input type="hidden" name="id" value="{$finish[0]['id']}">
+<table class="table table-hover table-striped table-bordered">
+	<tr>
+		<td colspan="9"><a class="btn btn-primary" href="__CONTROLLER__/selectOrders">返回</a></td>
+	</tr>
+	<tr>
+		<th>订单编号</th>
+		<th>商品名</th>
+		<th>商品图</th>
+		<th>买家</th>
+		<th>联系人</th>
+		<th>地址</th>
+		<th>卖家</th>
+		<th>数量</th>
+		<th>总价</th>
+	</tr>
+	<foreach name="info" item="vo">
+		<tr>
+			<td>{$vo.ordernumber}</td>
+			<td><textarea>{$vo.name}</textarea></td>
+			<td><img src="{$vo.img}" width="60"></td>
+			<td>{$vo.buyuser}</td>
+			<td>{$vo.linkname}</td>
+			<td><textarea>{$vo.address}</textarea></td>
+			<td>{$vo.shopname}</td>
+			<td>{$vo.num}</td>
+			<td>{$vo.total}</td>
+		</tr>
+	</foreach>
+</table>
+</block>

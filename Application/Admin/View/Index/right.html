@@ -1,0 +1,55 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('请登录！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+后台首页
+</block>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/highcharts.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Admin/js/modules/exporting.js"></script>
+
+<block name="right">
+    <table class="table table-striped">
+    	<tr>
+    		<td colspan="2">
+    			<span style="font-weight:bolder">感谢您使用三合网上购物商城后台管理系统</span>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2">
+    			<span style="font-size:14px;margin-left:28px">1. 本系统是由三合兄弟网络工作室开发，版本: v1.0。</span>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2">
+    			<span style="font-size:14px;margin-left:28px">2. 通过本系统可以更直观、更便捷的浏览网站数据。你只需会上网、会打字，就可以管理网站。</span>
+    		</td>
+    	</tr>
+    	<tr>
+    		<td colspan="2">
+    			<span style="font-size:14px;margin-left:28px">3.  如有问题请联系三合兄弟网络工作室 电话12345678901。</span>
+    		</td>
+    	</tr>
+        <switch name="row[0]['state']">    
+            <case value="0"><php>$state = '超级管理员';</php></case>    
+            <case value="1"><php>$state = '管理员';</php></case>    
+            <case value="2"><php>$state = '录入人员';</php></case>    
+            <default />
+        </switch>
+	     <tr>
+	        <td style="padding-left:100px;width:300px">欢迎您：&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bolder;color:#ffb90f">{$username}</span></td>
+	        <td style="padding-left:-300px">您的身份是：&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bolder;color:#ffb90f">{$state}</span></td>
+	    </tr>
+	    <tr>
+	        <td style="padding-left:100px">上次登录时间：&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bolder;color:#ffb90f">{$lastLogTime|date='Y-m-d H:i:s',###}</span></td>
+	        <td>本次登录时间：&nbsp;&nbsp;&nbsp;&nbsp;<span style="font-weight:bolder;color:#ffb90f">{$nowTime|date='Y-m-d H:i:s',###}</span></td>
+	    </tr>
+	    <tr>
+	        <td style="padding-left:100px" colspan="2">这是第&nbsp;&nbsp;<span style="font-weight:bolder;color:#ffb90f">{$row[0]['loginnum']}&nbsp;&nbsp;</span>次登陆</td>
+	    </tr>
+    </table>    
+</block>

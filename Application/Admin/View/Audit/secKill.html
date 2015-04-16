@@ -1,0 +1,52 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+审核管理 >> 未审核秒杀详情
+</block>
+<block name="right">
+<form action="__MODULE__/Audit/secKillDo" method="post">
+<input type="hidden" name="id" value="1">
+<table class="table table-striped">
+	<tr>
+		<td align="center">商品名：</td>
+		<td><input type="text" name="goodsname" value="阿斯蒂芬"></td>
+	</tr>
+	<tr>
+		<td align="center">商品图片：</td>
+		<td><img src="__PUBLIC__/Admin/images/main_05.gif" width="80"></td>
+	</tr>
+	<tr>
+		<td align="center">店铺名：</td>
+		<td><input type="text" name="shopname" value="阿斯蒂芬"></td>
+	</tr>
+	<tr>
+		<td align="center">市场价：</td>
+		<td><input type="text" name="price" value="123"></td>
+	</tr>
+	<tr>
+		<td align="center">秒杀价：</td>
+		<td><input type="text" name="secprice" value="100"></td>
+	</tr>
+	<tr>
+		<td align="center">数量：</td>
+		<td><input type="text" name="num" value="100"></td>
+	</tr>
+	<tr>
+		<td align="center">商品简介：</td>
+		<td><textarea name="intro"></textarea></td>
+	</tr>
+	<tr>
+		<td align="center">秒杀状态：</td>
+		<td>无</td>
+	</tr>
+	<tr>
+		<td colspan="2"><button type="submit" class="btn btn-primary col-md-4 col-md-offset-1">提交秒杀商品</button></td>
+	</tr>
+</table>
+</form>
+</block>

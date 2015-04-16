@@ -1,0 +1,62 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-闪团列表</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+<block name="group">	
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-pencil active"></i> <span>申请闪团</span><span class="label">2</span></a>
+		<ul>
+			<li><a href="__MODULE__/Group/add">添加闪团商品</a></li>
+			<li class="active"><a href="__MODULE__/Group/groupList">闪团商品列表</a></li>
+		</ul>
+
+	</li>
+</block>
+
+<block name="content">
+<br />
+<h3>闪团列表</h3>
+<table class="table table-hover">
+	<tr>
+		<th>商品编号</th>
+		<th>商品名</th>
+		<th>闪团图片</th>
+		<th>商品售价</th>
+				
+		<th>申请闪团时间</th>
+		<th>闪团状态</th>
+		<th>操作</th>
+	</tr>
+	<foreach name="list" item="vo">
+		<tr align="center" id="group">
+			<td><a <a href="__MODULE__/GoodsAction/goodsIntro?id={$vo.id}"><b>{$vo.goodscode}</b></a></td>
+			<td>{$vo.goods}</td>
+			<td>{$vo.mapimg}</td>
+			<td>{$vo.discount}</td>
+			
+			<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+			
+			<td>
+				
+				<kbd>
+					
+					<switch name="vo.status">    
+					<case value="0">等待审核</case>    
+					<case value="1">审核通过</case>    
+					<case value="2">审核失败</case>    
+					
+					</switch>
+				</kbd>
+			</td>
+			<td><a href="__CONTROLLER__/delGroup?goodscode={$vo.goodscode}" class="btn btn-danger">删除</a></td>
+		</tr>
+	</foreach>
+	<tr><td colspan="6">{$page}</td></tr>>
+</table>
+<script type="text/javascript">
+	
+	$("#group img").attr({'width':'100px','height':'50px'});
+</script>
+</block>

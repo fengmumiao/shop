@@ -1,0 +1,39 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+商户管理 >> 查看差评商铺
+</block>
+<block name="right">
+<table class="table table-hover table-striped">
+	<tr>
+		<th>商铺名</th>
+		<th>LOGO</th>
+		<th>商铺管理员</th>
+		<th>电子邮箱</th>
+		<th>联系电话</th>
+		<th>访客量</th>
+		<th>操作</th>
+	</tr>
+	<foreach name="row" item="vo">
+		<tr>
+			<td><a href="__CONTROLLER__/findShop?id={$vo.id}" target="rightFrame">{$vo.shopname}</a></td>
+			<td><img src="__PUBLIC__/Home/images/carousel/{$vo.upic}" width="60"></td>
+			<td>{$vo.username}</td>
+			<td>{$vo.email}</td>
+			<td>{$vo.phone}</td>
+			<td>{$vo.visitors}</td>
+			<td>
+				<a href="__CONTROLLER__/delete?id={$vo.id}" target="rightFrame"><button class="btn btn-danger">删除</button></a>&nbsp;<a href="__CONTROLLER__/forbidden?id={$vo.id}" target="rightFrame"><button class="btn btn-warning">禁用</button></a>
+			</td>
+		</tr>
+	</foreach>
+	<tr>
+		<td colspan="7" align="center">{$page}</td>
+	</tr>
+</table>
+</block>

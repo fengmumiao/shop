@@ -1,0 +1,83 @@
+<extend name="Public:layout" />
+<block namee="title">商家管理-会员订单</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+<block name="orders">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-tint"></i> <span>订单管理</span><span class="label">2</span></a>
+		<ul>
+            <li class="active"><a href="__MODULE__/Orders/effectiveOrder">待解决订单</a></li>
+			<li><a href="__MODULE__/Orders/finishedOrder">已完成订单</a></li>
+
+			
+
+		</ul>
+
+	</li>
+</block>
+
+<block name="content">
+<div id="content-header">
+				<h1>会员订单</h1>
+				
+			</div>
+			<div id="breadcrumb">
+				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>Order</a>
+				<a href="#" class="current">set</a>
+			</div>
+		
+    <!-- 搜索 -->
+    <form action="__CONTROLLER__/searchorders" method="post">
+        <input type="text" name="ordernumber" style="margin-left:12px;width:200px" placeholder="请输入查询订单编号">
+        <button type="submit" class="btn btn-info btn-sm">查询</button>
+    </form>
+			
+<div class="table-responsive">
+  <table class="table table-hover" style="font-size:14px;color:#666">
+    <tr class="one">
+        <th>#</th>
+    	<th>用户名</th>
+    	<th>订单编号</th>
+    	<th>联系人</th>
+    	<th>联系地址</th>
+    	
+    	<th>电话</th>
+    	<th>总金额</th>
+        <th>发货状态</th>
+        <th>下单时间</th>
+    	
+    	<th >操作</th>
+    </tr>
+    <foreach name="list" item="vo">
+   		 <tr align="center" class="content">
+            <td>{$vo.str}</td>
+    		<td>{$vo.buyuser}</td>
+    		<td>{$vo.ordernumber}</td>
+    		<td>{$vo.linkname}</td>
+    		<td>{$vo.address}</td>
+    		<td>{$vo.phone}</td>
+            <td>{$vo.total}</td>
+    		<td name="status">
+
+              <switch name="vo.status">    
+                    <case value="0"><a href="__CONTROLLER__/sendGoods?id={$vo.id}"><span style='color:blue'><b>发货</b></span></a></case> 
+                    <case value="1"><php><span style='color:purple'>等待买家收货</span></case>    
+                    <case value="2"><span style='color:green'>交易完成</span></case>    
+                    <case value="3"><span style='color:#333'>退货</span></case>    
+                    
+                </switch>
+            </td>
+
+
+    		<td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+    		<td ><a href="__CONTROLLER__/introOrder?number={$vo.ordernumber}" class="btn btn-warning btn-xs">查看详情</a></td>
+    	</tr>
+
+    </foreach>
+  </table>
+  <div align="right">{$page}</div>
+</div>
+
+
+</block>

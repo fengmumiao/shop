@@ -1,0 +1,81 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-商家公告</block>
+ <block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+ <block name="infoSettings">	     
+				<li class="submenu active open">
+					<a href="#"><i class="icon icon-th-list"></i> <span>信息配置</span> <span class="label">8</span></a>
+					<ul>
+						<li><a href="__MODULE__/infoSettings/basicInformation">基本信息</a></li>
+						<li><a href="__MODULE__/infoSettings/shopInfo">店铺介绍</a></li>
+						<li class="active"><a href="__MODULE__/infoSettings/merchantsAnnou">商家公告</a></li>
+						<li><a href="__MODULE__/infoSettings/goodsClassify">商品分类</a></li>
+						<li><a href="__MODULE__/infoSettings/changePass">密码修改</a></li>
+						<li><a href="__MODULE__/infoSettings/friendLink">友情链接</a></li>
+						<li><a href="__MODULE__/infoSettings/shopLogo">店铺logo</a></li>
+					</ul>
+				</li>
+</block>			
+				
+		
+	<block name="content">
+			<div id="content-header">
+				<h1>商店信息修改</h1>
+				<div class="btn-group">
+					<a class="btn btn-large tip-bottom" title="Manage Files"><i class="icon-file"></i></a>
+					<a class="btn btn-large tip-bottom" title="Manage Users"><i class="icon-user"></i></a>
+					<a class="btn btn-large tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a>
+					<a class="btn btn-large tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a>
+				</div>
+			</div>
+			<div id="breadcrumb">
+				<a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i> Home</a>
+				<a href="#" class="current">信息配置</a>
+			</div>
+			<div class="container-fluid">
+				<div class="row-fluid">
+					<div class="span12 center" style="text-align: center;">					
+						<ul class="stat-boxes">
+							<li>
+								<div class="left peity_bar_good"><span>2,4,9,7,12,10,12</span>+20%</div>
+								<div class="right">
+									<strong>36094</strong>
+									Visits
+								</div>
+							</li>
+							<li>
+								<div class="left peity_bar_neutral"><span>20,15,18,14,10,9,9,9</span>0%</div>
+								<div class="right">
+									<strong>1433</strong>
+									Users
+								</div>
+							</li>
+							<li>
+								<div class="left peity_bar_bad"><span>3,5,9,7,12,20,10</span>-50%</div>
+								<div class="right">
+									<strong>8650</strong>
+									Orders
+								</div>
+							</li>
+							<li>
+								<div class="left peity_line_good"><span>12,6,9,23,14,10,17</span>+70%</div>
+								<div class="right">
+									<strong>8650</strong>
+									Orders
+								</div>
+							</li>
+						</ul>
+					</div>	
+				</div>
+				
+				
+				
+					
+				<div class="row-fluid">
+					<div id="footer" class="span12">
+						2012 &copy; Unicorn Admin. Brought to you by <a href="https://wrapbootstrap.com/user/diablo9983">diablo9983</a>
+					</div>
+				</div>
+			</div>
+			</block>

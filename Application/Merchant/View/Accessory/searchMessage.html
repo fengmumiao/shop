@@ -1,0 +1,81 @@
+<extend name="Public:layout" />
+<block namee="title">商家管理-留言查询</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+<block name="accessoryMana">	
+		<li class="submenu active open">
+			<a href="#"><i class="icon icon-th-list"></i> <span>评论管理</span><span class="label">5</span></a>
+			<ul>
+				<li><a href="__MODULE__/Accessory/notMessage">回复留言</a></li>
+				<li class="active"><a href="__MODULE__/Accessory/searchMessage">回复内容</a></li>
+				<!-- <li><a href="__MODULE__/Accessory/intergrationAction">积分管理</a></li>
+				<li><a href="__MODULE__/Accessory/giftAction">礼品卡管理</a></li>
+				<li><a href="__MODULE__/Accessory/couponAction">优惠券管理</a></li> -->
+			</ul>
+			</li>
+		</block>	
+
+<block name="content">
+<br/>
+<h3>所有留言</h3>
+<table class="table table-bordered table-hover">
+		<tr bgcolor="#7e99e7">
+			<td>用户名</td>
+			<td>购买商品编号</td>
+			<td>留言内容</td>
+			<td>回复内容</td>
+			<td>留言评分</td>
+			<td>回复时间</td>
+			<td>评论详情</td>
+		
+		</tr>
+	<foreach name="data" item="vo">
+		<tr>
+			<td>{$vo.uname}</td>
+			<td><a href="__MODULE__/GoodsAction/goodsIntro?id={$vo.id}"><b>{$vo.goodsnumber}</b></a></td>
+			<td>{$vo.review|mb_substr=0,6,'utf-8'}</td>
+			<td>{$vo.replay|mb_substr=0,6,'utf-8'}</td>
+			<td>{$vo.score}</td>
+			<td>{$vo.replaytime|date="Y-m-d H:i:s",###}</td>
+			<td><button  class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-lg" name="messageinfo">评论详情</button></td>
+		</tr>
+	
+		<tr style="display:none">
+
+			<td colspan="6">买家	
+			<b style="color:red">{$vo.uname}</b>
+			留言:<p style="color:blue">　　　　{$vo.review}　　　　　　{$vo.addtime|date="Y-m-d H:i:s",###}</p>
+
+			
+			
+		<div style="float:right">店家
+			<b style="color:green">{$_SESSION['salename']}</b>
+			回复:<p style="color:orange;">　　　　{$vo.replay}　　　　　　{$vo.replaytime|date="Y-m-d H:i:s",###}</p>
+			</div>
+			</td>
+			<td>
+				<button class="btn btn-warning" name="close">收起</button>
+				<a href="delMessage?id={$vo.id}" class="btn btn-danger">删除</a>
+			</td>
+		</tr>
+
+		
+		
+	</foreach>
+	<tr align="center"><td colspan="7">{$page}</td></tr>
+</table>
+<script type="text/javascript">
+
+	$("button[name=messageinfo]").click(function(){
+		
+		$(this).parent().parent().next().css('display','')
+		})
+
+	$("button[name=close]").click(function(){
+		
+		$(this).parent().parent().css('display','none')
+		})
+</script>
+
+</block>

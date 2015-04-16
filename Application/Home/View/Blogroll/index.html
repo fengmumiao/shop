@@ -1,0 +1,37 @@
+<extend name="Public:lists" />
+<block name="title">{$title}</block>
+<block name="js_css">
+        <link href="__PUBLIC__/Home/css/base.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/css/goods_outlets.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/list/css/base-2.css?2.9.4" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+      <script type="text/javascript" src="__PUBLIC__/Home/js/list.js"></script>
+      <script type="text/javascript" src="__PUBLIC__/Home/js/info.js"></script>
+      <link href="__PUBLIC__/Home/seckill/css/seckill.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/group/css/topics-new.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/total/mold-2.css">
+      <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/total/jquery.css">
+</block>
+<block name="content">
+<div class="blank10"></div>
+<div class="cen scen grayborder">
+	<div class="friendlink">
+	<div class="curLct ngoods_bor">您当前位置：
+		<a href="http://www.yougou.com/">首页</a> &gt;
+		 <h1 style="font:normal 12px/20px 宋体;width:auto;height:auto;background:none;display:inline;">友情链接</h1> 
+	</div>
+		<h2 class="tleft Size14"><span>文字链接</span></h2>
+		<ul class="fl linklist">
+			<foreach name="row" item="vo">
+			<li><a href="http://{$vo.linkurl}/" target="_blank" title="{$vo.linkname}">{$vo['linkname']}</a></li>
+			</foreach>
+		</ul>
+		<div class="clear"></div>
+	</div>
+</div>
+<div class="ygwrap friendlinkcontact">
+	<h2>友情链接联系方式:</h2>
+	<p>邮箱：seo#yougou.com （发邮件时请把#替换成@）</p>
+	<p>Q Q： 2540714875</p>
+</div>	
+</block>	

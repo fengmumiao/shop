@@ -1,0 +1,173 @@
+<extend name="Public:lists" />
+<block name="title">{$title}</block>
+<block name="js_css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/fss.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/index.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/personal/bdsstyle.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/personal/ucenter_v2.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/personal/ygdialog.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/channel.css">
+    <link href="__PUBLIC__/Home/css/base.css?2.9.4" type="text/css" rel="stylesheet" />
+    <link href="__PUBLIC__/Home/list/css/base-2.css?2.9.4" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/list.js"></script>
+</block>
+<block name="content">
+<p class="curLct">您当前的位置：<a href="" class="f_blue">首页</a> &gt; 我的优购</p>
+<div class="cen clearfix">
+	<!--左侧公共部分 start-->
+<div class="u_leftxin u_leftxin fl mgr10" id="umenu">
+	<div class="wdygtit"><a href=""><span>我的优购</span></a></div>
+	<ul class="jiaoyizx">
+    	<li class="ultit">交易中心</li>
+    	<li class="myorderli"><a href="__APP__/OrderSet"><span>我的订单</span></a></li>
+    	<li class="myfavorli"><a href=""><span>我的收藏</span></a></li>
+    	<li class="mydatingbuyli"><a href=""><span>我的预约</span></a></li>
+    	<li class="mycommentli"><a href=""><span>商品评论/晒单</span></a></li>
+        <li class="msgli"><a href=""><span id="uc_msg_count">站内消息<i class="huise">（<em>0</em>）</i></span></a></li>
+    </ul>
+    <ul class="wodezc">
+    	<li class="ultit">我的资产</li>
+    	<li class="mycouponli"><a href=""><span id="my_coupon_tick">我的优惠券</span></a></li>
+        <li class="giftcardli"><a href=""><span id="my_giftcard_tick">我的礼品卡</span></a></li>
+        <li class="mypointli"><a href="__APP__/Total"><span id="my_point_tick">我的积分</span></a></li>
+    </ul>
+	<ul class="gerensz">
+    	<li class="ultit">个人设置</li>
+    	<li class="myinfoli"><a href="__APP__/Data"><span>个人资料</span></a></li>
+        <li class="safesetli"><a href=""><span id="uc_safe_level">安全设置</span></a></li>
+        <li class="myaddrli"><a href=""><span>我的收货地址</span></a></li>
+    </ul>
+    <ul class="shouhoufw">
+    	<li class="ultit">售后服务</li>
+    	<li class="afterservli"><a href=""><span>查看退换货</span></a></li>
+        <li class="appservli"><a href=""><span>申请退换货</span></a></li>
+    </ul>
+</div>    <!--左侧公共部分 end-->
+
+<div id="ucindex" class="uc_right fr" style="margin-right:195px;">
+    	<!--右侧头部 start-->
+
+<p class="ubtitle"><span class="Size14 fb">修改密码</span></p>
+<div class="u_con2" style="height:204px">
+    <div class="u_unit fl passwordf" style="">
+        <form action="" onsubmit="return fun()" method="post" id="form_" name="form_">
+            <input id="promptMsg" name="promptMsg" value="" type="hidden">  
+            <div class="row" style="height:50px">
+                <label>旧密码：</label>
+                <span><input id="oldPwd" class="sinput" name="oldPwd" maxlength="16" autocomplete="off" type="password"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span id="oldPwd_tips" class="f_gray">请输入旧密码</span>
+            </div>
+            <div class="row" style="height:50px">
+                <label>新密码：</label>
+                <span><input id="newPwd" class="sinput" name="newPwd" maxlength="16" autocomplete="off" type="password"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span id="newPwd_tips" class="f_gray">密码可使用字母+数字或符号的组合长度6-16个字符</span>
+            </div>
+            <div class="row" style="height:50px">
+                <label>确认密码：</label>
+                <span><input class="sinput" name="surePwd" id="surePwd" maxlength="16" autocomplete="off" type="password"></span>
+                <span>&nbsp;&nbsp;</span>
+                <span id="surePwd_tips" class="f_gray">请再次输入密码进行确认</span>
+            </div>
+                <label></label>
+                <span><input value="确认修改" class="u1_btn" name="submit1" type="submit"></span>
+                <input type="submit" value="保 存" name="basic_submit" class="buybtn rbtn" style="margin-top:0px;margin-left:40px;">
+            </form></div>
+        
+    </div>      
+</div>
+</div>
+<script type="text/javascript">
+        var condition = false;
+        // 原始密码判断
+        oldPwd();
+        function oldPwd(){
+            $('#oldPwd').blur(function(event) {
+                var content = {'pwd':$('#oldPwd').val()};
+                $.ajax({
+                    url:'/index.php/Personal/oldPwd',
+                    data:content,
+                    type:'POST',
+                    success:function(data){
+                        if (data == '密码不正确！') {
+                            condition = false;
+                            $('#oldPwd_tips').html('密码不正确！').css('color', 'red');
+                        }else if($('#oldPwd').val() == ''){
+                            condition = false;
+                            $('#oldPwd_tips').html('密码不能为空！').css('color', 'red');
+                        }else{
+                            $('#oldPwd_tips').html('密码正确！').css('color', 'green');
+                            condition = true;
+                        }
+                    }
+                });
+            });
+        }
+        $('#oldPwd').focus(function(event) {
+            $('#oldPwd_tips').html('请输入旧密码').css('color', '#666666');;
+        });
+        newPwd(); // 新密码
+        function newPwd(){
+            $('#newPwd').blur(function(event) {
+                if ($('#newPwd').val().length < 6) {
+                    condition = false;
+                    $('#newPwd_tips').html('密码不能少于6位数！').css('color', 'red');
+                }else if($('#newPwd').val() == ''){
+                    condition = false;
+                    $('#newPwd_tips').html('密码不能为空！').css('color', 'red');
+                }else if(!$('#newPwd').val().match(/[0-9a-zA-Z]{6,16}/)){
+                    condition = false;
+                     $('#newPwd_tips').html('密码可使用字母+数字或符号的组合长度6-16个字符！').css('color', 'red');
+                }else{
+                    condition = true;
+                    $('#newPwd_tips').html('密码可用!').css('color', 'green');
+                }
+            });
+        }
+        $('#newPwd').focus(function(event) {
+            $('#newPwd_tips').html('密码可使用字母+数字或符号的组合长度6-16个字符！').css('color', '#666666');;
+        });
+        // 密码判断
+        surePwd();
+        function surePwd(){
+            $('#surePwd').blur(function(event) {
+                if ($('#surePwd').val() !== $('#newPwd').val()) {
+                    condition = false;
+                    $('#surePwd_tips').html('两次密码不一致').css('color', 'red');
+                }else if($('#surePwd').val() == ''){
+                    condition = false;
+                    $('#surePwd_tips').html('密码不能为空！').css('color', 'red');
+                }else{
+                    condition = true;
+                    $('#surePwd_tips').html('密码一致').css('color', 'green');
+                }
+            });
+        }
+        $('#surePwd').focus(function(event) {
+            $('#surePwd_tips').html('请再次输入密码进行确认').css('color', '#666666');
+        });
+        clickOn(); //提交设置
+        function clickOn(){
+            $('.buybtn').live('click', function(event) {
+                if ($('#oldPwd').val() == '') {
+                    condition = false;
+                }
+                if($('#newPwd').val() == ''){
+                    condition = false;
+                }  
+                if($('#surePwd').val() == '') {
+                    condition = false;
+                } 
+            });
+        }
+        function fun(){
+            if (condition) {
+                return true;
+            }else{
+                return false;
+            }
+        }
+</script>
+</block>	

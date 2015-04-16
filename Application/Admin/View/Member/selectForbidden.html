@@ -1,0 +1,46 @@
+<if condition="session('username') heq null">   
+    <script>
+        alert('干嘛呢这是！');
+        location.href="__MODULE__/Login/login";
+    </script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+会员管理 >> 查看会员
+</block>
+<style type="text/css">
+
+</style>
+<block name="right">
+<style type="text/css">
+    tr{
+      height: 30px;
+    }
+    .main th,.main td{
+      text-align: center;
+    }
+</style>
+    <table width="100%" class="main table table-striped">
+        <thead>
+            <th>用户名</th>
+            <th>电话</th>
+            <th>注册时间</th>
+            <th>地址</th>
+            <th>操作</th>
+        </thead>
+        <foreach name="row" item="vo">
+        <tr>
+            <td><a href="__CONTROLLER__/editMessage?id={$vo.id}" target="rightFrame">{$vo.username}</a></td>
+            <td>{$vo.phone}</td>
+            <td>{$vo.regtime|date='Y-m-d H:i:s',###}</td>
+            <td><textarea rows="1">{$vo.address}</textarea></td>
+            <td>
+                <a href="__CONTROLLER__/editForbidden?id={$vo.id}" target="rightFrame"><button class="btn btn-warning">启用</button></a>&nbsp;<a href="__CONTROLLER__/delete?id={$vo.id}"><button class="btn btn-danger">删除</button></a>
+            </td>
+        </tr>
+        </foreach>
+        <tr>
+            <td colspan="6">{$page}</td>
+        </tr>
+    </table>
+</block>

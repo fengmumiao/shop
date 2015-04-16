@@ -1,0 +1,27 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+分类管理 >> 查看所有分类
+</block>
+<block name="right">
+<table class="table table-striped">
+	<tr>
+		<th width="400">分类</th>
+		<th>操作</th>
+	</tr>
+	{$str}	
+</table>
+<script type="text/javascript">
+	function del(){
+		if(confirm("你正在删除分类，若是高级分类，则会删除本类及子类，且不可恢复！确认删除吗？")) 
+			return true; 
+			else 
+			return false;
+		}
+</script>
+</block>

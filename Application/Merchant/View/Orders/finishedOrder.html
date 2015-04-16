@@ -1,0 +1,90 @@
+<extend name="Public:layout" />
+
+<block namee="title">商家管理-会员订单</block>
+<block name="goodsManage">
+    <li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+<block name="orders">
+    <li class="submenu active open">
+        <a href="#"><i class="icon icon-tint"></i> <span>订单管理</span><span class="label">2</span></a>
+        <ul>
+            <li class="active"><a href="__MODULE__/Orders/effectiveOrder">待解决订单</a></li>
+            <li><a href="__MODULE__/Orders/finishedOrder">已完成订单</a></li>
+
+            <!-- <li><a href="__MODULE__/Orders/wasteOrder">订单查询</a></li> -->
+
+    <!-- <li><a href="__MODULE__/Orders/wasteOrder">订单查询</a></li> -->
+
+        </ul>
+
+    </li>
+</block>
+
+<block name="content">
+<br/>
+               <p align="center"><span style="color:orange;font-size:20px">订单收入状况</span>　　　　　　　从<input type="text" id="start" placeholder="格式 20140809"> 到 <input type="text" id="end" placeholder="结束日期"> 订单收入为 <b name="money" style="color:red;font-size:18px">0</b> 元</p>
+          
+            <div id="breadcrumb">
+                <a href="#" title="Go to Home" class="tip-bottom"><i class="icon-home"></i>Order</a>
+                <a href="#" class="current">set</a>
+            </div>
+            <!-- 搜索 -->
+    <form action="__CONTROLLER__/searchorders" method="post">
+        <input type="text" name="ordernumber" style="margin-left:12px;width:200px" placeholder="请输入查询订单编号">
+        <button type="submit" class="btn btn-info btn-sm">订单查询</button>
+    </form>
+
+<div class="table-responsive">
+  <table class="table table-hover" style="color:#666;font-size:14px;">
+    <tr class="one">
+        <th>#</th>
+        <th>用户名</th>
+        <th>订单编号</th>
+        <th>联系人</th>
+        <th>联系地址</th>
+        
+        <th>电话</th>
+        <th>总金额</th>
+        <th>发货状态</th>
+        <th>下单时间</th>
+        
+        <th >操作</th>
+    </tr>
+    <foreach name="list" item="vo">
+         <tr align="center" class="content">
+            <td>{$vo.str}</td>
+            <td>{$vo.buyuser}</td>
+            <td>{$vo.ordernumber}</td>
+            <td>{$vo.linkname}</td>
+            <td>{$vo.address}</td>
+            <td>{$vo.phone}</td>
+            <td>{$vo.total}</td>
+             
+            <switch name="vo.status">    
+                <case value="0"><php>$state="<span style='color:red' class='sendGoods'>发货</span>";</php></case> 
+                <case value="1"><php>$state="<span style='color:purple'>已发货</span>";</php></case>    
+                <case value="2"><php>$state="<span style='color:green'>交易完成</span>";</php></case>    
+                <case value="3"><php>$state="<span style='color:#333'>退货</span>";</php></case>    
+                
+            </switch>
+           
+            <td name="status">
+
+            <php>echo $state;</php></a>
+
+            </td>
+
+
+            <td>{$vo.addtime|date="Y-m-d H:i:s",###}</td>
+            <td ><a href="__CONTROLLER__/introOrder?number={$vo.ordernumber}" class="btn btn-warning btn-xs">查看详情</a></td>
+            <!-- <td align="left"><button type="button" class="btn btn-danger" style="height:20px;line-height:8px;font-size:12px;"><a href="" style="color:#fff;">发货</a></button></td>   -->
+        </tr>
+
+    </foreach>
+  </table>
+  <div align="right">{$page}</div>
+</div>
+<script type="text/javascript" src="__PUBLIC__/Merchant/rank/js/jquery-1.7.2.js"></script>
+<script type="text/javascript" src="__PUBLIC__/Merchant/js/orders.js"></script>
+
+</block>

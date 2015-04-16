@@ -1,0 +1,50 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+订单管理 >> 查看最新订单
+</block>
+<block name="right">
+<table class="table table-hover table-striped table-bordered">
+	<tr>
+		<td colspan="6">
+		<!-- form表单，用于搜索订单 -->
+		<form action="__CONTROLLER__/selectOrders" method="post">
+			<input type="text" name="key" />&nbsp;&nbsp;
+			<button type="submit" class="btn btn-primary">查询订单</button>
+		</form>
+		</td>
+	</tr>
+	<tr>
+		<th>订单编号</th>
+		<th>下单用户</th>
+		<th>联系电话</th>
+		<th>订单生成时间</th>
+		<th>订单状态</th>
+	</tr>
+	<foreach name="row" item="vo">
+	
+		<tr>
+			<td><a href="__CONTROLLER__/selectInfo?number={$vo.ordernumber}">{$vo.ordernumber}</a></td>
+			<td>{$vo.buyuser}</td>
+			<td>{$vo.phone}</td>
+			<td>{$vo.addtime|date='Y-m-d',###}</td>
+			<td>
+				<switch name="vo.status">    
+			        <case value="0"><span style='color:blue'><b>未发货</b></span></a></case> 
+			        <case value="1"><php><span style='color:purple'>等待买家收货</span></case>    
+			        <case value="2"><span style='color:green'>交易完成</span></case>            
+			        <case value="3"><span style='color:gray'>退货订单</span></case>            
+	   			</switch>
+   			</td>
+		</tr>
+	</foreach>
+		<tr id="page">
+			<td colspan="6" align="center">{$page}</td>
+		</tr>
+</table>
+</block>

@@ -1,0 +1,40 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+审核管理 >> 未审核商品列表
+</block>
+<block name="right">
+<table class="table table-hover table-striped">
+	<tr>
+		<th>商品编号</th>
+		<th>商品名</th>
+		<th>所属品牌</th>
+		<th>商品市场价</th>
+		<th>商品现价</th>
+		<th>商品简介</th>
+		<th>操作</th>
+	</tr>
+	<foreach name="row" item="vo">
+		<tr>
+			<td>{$vo.id}</td>
+			<td><a href="__MODULE__/Audit/goods?id={$vo.id}">{$vo.goods}</a></td>
+			<td>{$vo.brand}</td>
+			<td>{$vo.price}元</td>
+			<td>{$vo.discount}元</td>
+			<td><textarea rows="1">{$vo.intro}</textarea></td>
+			<td>
+				<a href="__CONTROLLER__/editState?id={$vo.id}"><button class="btn btn-primary">通过</button></a>
+				<a href="__CONTROLLER__/notPass?id={$vo.id}"><button class="btn btn-primary btn-danger">不通过</button></a>
+			</td>
+		</tr>
+	</foreach>
+	<tr>
+		<td colspan="8" align="center">{$page}</td>
+	</tr>
+</table>
+</block>

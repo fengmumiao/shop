@@ -1,0 +1,192 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品属性</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+<block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li class="active"><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li> -->
+			<!-- 	<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+<block name="content">
+<br/>
+<h4>商品详情</h4>
+<script type="text/javascript">
+//js验证表单
+  var gets = true;//是否让表单提交
+  $(function(){
+//当输入框失去焦点的时候，需要执行的方法
+  $("input[name=popular]").blur(function(){doPopular();});
+  $("input[name=style]").blur(function(){doStyle();});
+  $("input[name=size]").blur(function(){doSize();});
+  $("input[name=num]").blur(function(){doNum();});
+  $("input[name=type]").blur(function(){doType();});
+
+});
+
+// 流行元素的验证
+  function doPopular(){
+    var t = $("input[name=popular]");
+    var span = t.next();
+    if(/^[a-zA-Z\u4e00-\u9fa5]{2,12}$/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+      span.html("使用汉字、字母，长度在2-12之间").css({color:"red",fontSize:"12px"});
+      return false;
+
+    }
+  }
+  // 季节的验证
+  function doSeason(){
+    var t = $("input[name=season]");
+    var span = t.next();
+    if(/^[a-zA-Z\u4e00-\u9fa5]{2,12}$/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+      span.html("使用汉字、字母，长度在2-12之间").css({color:"red",fontSize:"12px"});
+      return false;
+
+    }
+  }
+// 风格的验证
+  function doStyle(){
+    var t = $("input[name=style]");
+    var span = t.next();
+    if(/^[a-zA-Z\u4e00-\u9fa5]{2,12}$/.test(t.val())){
+        span.html("填写正确").css({color:"green",fontSize:"12px"});
+        return true;
+    }else{
+      span.html("长度为2-12位").css({color:"red",fontSize:"12px"});
+      	 return false;
+      }
+     
+  }
+// 尺寸的验证
+  function doSize(){
+    var t = $("input[name=size]");
+    var span = t.next();
+    if(/\d/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+    	span.html("必须为数字").css({color:"red",fontSize:"12px"});
+    }
+  }
+  // 数量的验证
+   function doNum(){
+    var t = $("input[name=num]");
+    var span = t.next();
+    if(/\d/.test(t.val())){
+      span.html("填写正确").css({color:"green",fontSize:"12px"});
+      return true;
+    }else{
+    	span.html("必须为数字").css({color:"red",fontSize:"12px"});
+    }
+  }
+
+  // 商品种类的验证
+  function doType(){
+    var t = $("input[name=type]");
+    var span = t.next();
+    if(/^[a-zA-Z\u4e00-\u9fa5]{2,12}$/.test(t.val())){
+    	span.html("符合标准").css({color:"green",fontSize:"12px"});
+     
+      return true;
+    }else{
+    	span.html("款式2-12,严重审核").css({color:"red",fontSize:"12px"});
+      	return false;
+    }
+ 
+  
+  }
+// 数据提交的时候执行的方法
+  function doTable(){
+    var goods = doSize();
+    var intro = doNum();
+    var season=doSeason();
+    var price = doPopular();
+    var discount = doType();
+    var content = doStyle();
+  
+    if(goods&&intro&&price&&discount&&content&&season){
+
+      return true;
+    }else{
+      return false;
+
+    }
+  }
+</script>
+
+
+<form action="attrgoods" method="post" enctype="multipart/form-data" onsubmit="return doTable()">
+	<table class="table table-bordered table-hover">
+	<tr align="center">
+		<td rowspan="8">
+		商品颜色:
+
+			<input type="text" name="color">
+
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+			<input type="file" id="v[]" name="photo[]" />
+		</td>
+	</tr>
+	<input type="hidden" name="goodsid" value={$_GET['goodsid']}>
+	<tr>
+		<td>
+		季节:<input type="text" name="season"><span></span>
+		</td>
+	</tr>
+	<tr>
+		<td>尺寸: <input type="text" name="size" placeholder="不同尺寸以逗号间隔"><span></span></td>
+		
+	</tr>
+	<tr>
+		<td>数量: <input type="text" name="num" placeholder="数量对应尺寸"><span></span></td>
+	</tr>
+	<tr>
+		<td>流行元素:<input name="popular" type="text" value={$goodsinfo[0]['popular']}><span></span></td>
+		
+	</tr>
+	<tr>
+		<td>性别:
+			<select name="sex">
+				<option value='1'>女</option>
+				<option value="0">男</option>
+			</select>
+		</td>
+	</tr>
+	<tr>
+		<td>款式:<input name="type" type="text" ><span></span></td>
+		
+	</tr>
+	<tr>
+		<td>风格:<input name='style' type="text"><span></span></td>
+	</tr>	
+	<tr align="center">
+		<td colspan="2">
+			<button type="submit" class="btn btn-success" onclick="return sure()">确定添加</button>
+			<button type="reset" class="btn btn-danger">重置所有</button>
+		</td>
+		
+	</tr>
+
+	</table>
+</form>
+
+</block>

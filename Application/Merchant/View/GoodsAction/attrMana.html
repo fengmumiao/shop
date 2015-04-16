@@ -1,0 +1,99 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品属性</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+<block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li class="active"><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li> -->
+			<!-- 	<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+<block name="content">
+<br/>
+<h4>商品详情</h4>
+
+
+
+<form action="Saveattr" method="post" enctype="multipart/form-data" >
+	<table class="table table-bordered table-hover">
+	<tr align="center">
+		<td colspan="2">
+		商品颜色:
+   			<input type="text" name="color" value="{$data[0]['color']}"><br>
+    <foreach name="arr" item="vo">
+    <img src="__PUBLIC__/Home/images/carousel/{$vo}" class="img-thumbnail img-circle" width="140px">
+    </foreach>
+
+		</td>
+	</tr>
+
+
+	<tr align="center">
+		<td>
+		季节:<input type="text" name="season" value="{$data[0]['season']}">
+		</td>
+    <td rowspan="7">
+    <b style="color:red">更换图片:</b>
+   
+    <input type="file" id="v[]" name="photo[]" value="<php>echo explode(',',$data[0]['picname'])[0];</php>" />
+    <input type="file" id="v[]" name="photo[]" />
+    <input type="file" id="v[]" name="photo[]" />
+    <input type="file" id="v[]" name="photo[]" />
+    <input type="file" id="v[]" name="photo[]" />
+    <input type="file" id="v[]" name="photo[]" />
+    <input type="file" id="v[]" name="photo[]" />
+
+  </td>
+	</tr>
+	<tr align="center">
+		<td>尺寸: <input type="text" name="size" placeholder="不同尺寸以逗号间隔" value="{$data[0]['size']}"><span></span></td>
+		
+	</tr>
+	<tr align="center">
+		<td>数量: <input type="text" name="num" placeholder="数量对应尺寸" value="{$data[0]['size']}"><span></span></td>
+	</tr>
+	<tr align="center">
+		<td>流行元素:<input name="popular" type="text" value="{$data[0]['popular']}"><span></span></td>
+		
+	</tr>
+	<tr align="center">
+		<td>性别:
+			<select name="sex">
+				<option value='1'>男</option>
+				<option value="0">女</option>
+			</select>
+		</td>
+	</tr>
+	<tr align="center">
+  <input type="hidden" name="id" value={$data[0]['id']}>
+		<td>款式:<input name="type" type="text" value="{$data[0]['type']}"><span></span></td>
+		
+	</tr>
+	<tr align="center">
+		<td>风格:<input name='style' type="text" value="{$data[0]['style']}"><span></span></td>
+	</tr>	
+
+
+  
+
+
+<tr align="center">
+	<td colspan="2">
+		<button type="submit" class="btn btn-info">保存更改</button>
+		<button type="reset" class="btn btn-primary">重置所有</button>
+	</td>
+	
+</tr>
+
+	</table>
+</form>
+
+</block>

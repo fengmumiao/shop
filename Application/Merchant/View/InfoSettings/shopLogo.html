@@ -1,0 +1,38 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-店铺logo</block>
+ <block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block>           
+<block name="infoSettings">
+				<li class="submenu active open">
+					<a href="#"><i class="icon icon-th-list"></i> <span>信息配置</span> <span class="label">8</span></a>
+					<ul>
+						<li><a href="__MODULE__/infoSettings/basicInformation">基本信息</a></li>
+						<li><a href="__MODULE__/infoSettings/shopInfo">店铺介绍</a></li>
+						<!-- <li><a href="__MODULE__/infoSettings/merchantsAnnou">商家公告</a></li>
+						<li><a href="__MODULE__/infoSettings/goodsClassify">商品分类</a></li> -->
+						<li><a href="__MODULE__/infoSettings/changePass">密码修改</a></li>
+						<!-- <li><a href="__MODULE__/infoSettings/friendLink">友情链接</a></li> -->
+						<li class="active"><a href="__MODULE__/infoSettings/shopLogo">店铺logo</a></li>
+					</ul>
+				</li>
+</block>
+<block name="content">
+<br/>
+<h2>名站logo</h2>
+	<form action="__URL__/upload" enctype="multipart/form-data" method="post" >
+	<table class="table table-hover">
+		<tr align="center">
+			<td><input type="file" name="photo" /><button type="submit" class="btn btn-danger">提交</button>
+			
+			</td>
+		</tr>
+		<tr align="center"><td><img src="__PUBLIC__/Home/images/carousel/{$photo[0]['upic']}"></td></tr>
+		
+	</table>
+		
+		
+	</form>
+	
+
+</block>	

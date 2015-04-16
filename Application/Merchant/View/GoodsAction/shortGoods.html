@@ -1,0 +1,55 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-缺货商品</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+ <block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li class="active"><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li class="active"><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li>
+			<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+
+<block name="content">
+<form>
+<h2>申请闪团</h2>
+<br/>
+<table class="table table-hover">
+<tr>
+	<td>商品名:</td>
+	<td>数据库获取</td>
+</tr>
+<tr>
+	<td>店铺名:</td>
+	<td>数据库获取</td>
+</tr>
+<tr>
+	<td>商场价:</td>
+	<td>数据库获取</td>
+</tr>
+<tr>
+	<td>闪团价:</td>
+	<td><input type="text" name="price"></td>
+</tr>
+<tr>
+	<td>商品图片</td>
+	<td><img src="..." alt="..." class="img-circle"></td>
+</tr>
+<tr>
+	<td>详情图片</td>
+	<td>
+	<textarea name="content" id="content"  style="width:800px;height:250px;visibility:hidden;" class="required"></textarea>
+	</td>
+</tr>
+<tr><td colspan="2" align="center"><button type="button" class="btn btn-success">提交申请</button></td></tr>
+
+</table>
+</form>
+</block>

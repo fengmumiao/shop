@@ -1,0 +1,462 @@
+<extend name="Public:lists" />
+<block name="title">{$name}</block>
+<block name="js_css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/fss.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/index.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/channel.css">
+      <link href="__PUBLIC__/Home/css/base.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/css/goods_outlets.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/list/css/base-2.css?2.9.4" type="text/css" rel="stylesheet" />
+      <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+      <script type="text/javascript" src="__PUBLIC__/Home/js/list.js"></script>
+      <link href="__PUBLIC__/Home/seckill/css/seckill.css?2.9.4" type="text/css" rel="stylesheet" />
+      <link href="__PUBLIC__/Home/group/css/topics-new.css?2.9.4" type="text/css" rel="stylesheet" />	
+</block>
+
+<block name="content">
+<!--//导航end-->
+
+<!--//公共头部end--> 
+
+<div id="fss_content">
+
+<!--头部start-->
+
+<div id="fss_hd">
+
+<!--布局为一栏 start-->
+
+<div class="fss_lyt fss_lyt_one">
+<div class="fss_colmain">
+
+<!--店招模块-->
+
+<div class="skin_box fss_custom_banner">
+<div class="skin_box_bd clearfix">
+<div class="tbaner_box">
+<img src="__PUBLIC__/Home/images/carousel/{$row['upic']}" width="110" height="50" alt="{$row['shopname']}" />
+<span class="name rel">{$row['shopname']}</span>
+<a class="sc rel" id="collectFss" data-storeName="{$row['shopname']}" href="javascript:void(0);">收藏本店</a>
+</div>
+</div>
+</div>
+
+<!--店招模块end-->
+
+<!--导航模块-->
+
+<div class="skin_box fss_main_nav">
+<div class="skin_box_bd clearfix">
+<ul class="fss_nav_list">
+<li class="on"><a  style="font-family:'黑体'" href="">首页</a></li>
+<foreach name="arr" item="nav">
+    <li>
+        <span name="types"><a style="font-family:'黑体'" href="#">{$nav}</a></span>
+    </li>
+</foreach>
+</ul>
+</div>
+</div>
+
+<!--导航模块end-->
+
+</div>
+</div>
+
+<!--布局为一栏end-->
+
+</div>
+
+<!--头部end-->
+
+<div id="fss_bd"> 
+<div class="fss_lyt fss_lyt_one">
+<div class="fss_colmain fss_col">
+
+<!--折扣特惠（一行4个商品）-->
+<div class="skin_box fss_rec_list">
+<div class="skin_box_bd clearfix">
+<div class="item4line1 mt10">
+<ul class="pro_lst clearfix">
+<foreach name="recommFirst" item="recommFirst">
+<li>
+<div class="itm_box">
+    <div class="hd">
+        <a href="__MODULE__/Info/index?id={$recommFirst['id']}">
+        <img src="__PUBLIC__/Home/images/carousel/{$recommFirst['picname']}" width="160" height="160" alt="" />
+        <sup no="100042133" class="mark_small_100042133 salepic"></sup>
+        </a>
+    </div>
+    <div class="bd">
+        <p class="name"><a title="{$recommFirst['goods']}"href="__MODULE__/Info/index?id={$vo['id']}"  target="_blank">{$recommFirst['goods']}</a></p>
+        <div class="price">
+			<p class="fl cmdtyPrice price_no100042133" no="100042133">优购价：<em class="ygprc16">&yen;<i>{$recommFirst['discount']}</i></em>({$recommFirst['disnum']}折)</p>
+            <p class="fr">市场价:<del>&yen;{$recommFirst['price']}</del></p>
+        </div>
+    </div>
+</div>
+</li>
+</foreach>
+</ul>
+</div>
+</div>
+</div>
+
+<!--折扣特惠（一行4个商品）end-->
+
+</div>
+</div>
+<div class="fss_lyt fss_lyt_n_w">
+
+
+<div class="fss_colsub fss_col">
+
+<!--店铺信息模块-->
+
+<div class="skin_box fss_shop_info">
+<div class="skin_box_hd">
+<h3>店铺介绍</h3>
+</div>
+<div class="skin_box_bd clearfix">
+<h4 class="shop_logo"><img src="__PUBLIC__/Home/images/carousel/{$row['upic']}" width="85" height="40" alt="" /></h4>
+
+<div class="shop_js">
+{$row['content']}
+</div>
+<div class="sj_info"><a class="fr" href="">{$row['shopname']}</a>商&nbsp;&nbsp;&nbsp;&nbsp;家：</div>
+</div>
+</div>
+
+<!--店铺信息模块end--> 
+
+<!--店铺搜索模块-->
+
+<div class="skin_box fss_srch_inshop">
+<div class="skin_box_hd"><h3>店内搜索</h3></div>
+<div class="skin_box_bd clearfix">
+<ul class="fl clearfix">
+<li class="keyword">
+<label for="keyword22"><span class="key">关键字：</span><input class="fss_ipt_txt fss_kw" type="text" value="" name="keyword" id="key"></label>
+</li>
+<input type="hidden" name="shopid" id="shopid" value="{$row['id']}">
+<li class="submit"><input id="search" class="fss_ipt_sbmt" type="submit" value="" /></li>
+</ul>
+</div>
+</div>
+
+<!--店铺搜索模块end-->
+
+<!--分类导航模块-->
+<div class="skin_box fss_cat_list">
+<div class="skin_box_hd">
+<h3>分类导航</h3>
+</div>
+<div class="skin_box_bd clearfix">
+<ul class="fss_cat_box">
+<li class="item all_pro">
+<h4><span id="getAll"><a href="#" style="font-family:'黑体'">查看所有商品&gt;&gt;</a></span></h4>
+</li>
+<foreach name="arr" item="arr">
+<li class="item">
+    <h4 class="cat_hd collapse"><span name="types"><a href="#"  style="font-family:'黑体'">{$arr}</a></span></h4>
+</li>
+</foreach>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+<!--分类导航模块end-->
+<!--销售排行模块-->
+<div class="skin_box fss_sale_rank">
+
+
+<div class="skin_box_hd">
+
+<!-- 销售排行start -->
+<h3>销售排行</h3>
+</div>
+<div class="skin_box_bd clearfix">
+<div class="pannel js_sale_rank_pannel">
+<ul class="fss_pro_list2">
+
+<foreach name="list" item="vo">
+<li>
+<p class="pro_name"><a href="__MODULE__/Info/index?id={$vo['id']}" target="_blank" title="{$vo.goods}">{$vo['goods']}</a></p>
+<div class="pro_info clearfix">
+    <div class="pro_pic fl">
+    <a href="__MODULE__/Info/index?id={$vo['id']}" target="_blank">
+    <img  width="60" height="60" src="__PUBLIC__/Home/images/carousel/{$vo['picname']}" alt="" /></a></div>
+    <div class="price">
+        <p>市场价:<del>&yen;{$vo.price}</del></p>
+        <p class="fl cmdtyPrice price_no99998977" no="99998977">优购价:<em class="ygprc16">&yen;<i>{$vo.discount}</i></em>({$vo.disnum}折)</p>
+    </div>
+</div>
+</li>
+</foreach>
+</ul>
+</div>
+</div>
+</div>
+
+
+<!--销售排行模块end-->
+</div>
+<div class="fss_colmain fss_col">
+
+<!--商品推荐（一行4个商品）-->
+<div class="skin_box fss_rec_list">
+<div class="skin_box_hd"><h3 style="font-family:'黑体" id="text">  本店热销  </h3><i class="hd_jt"></i></div>
+<div class="skin_box_bd clearfix">
+<div class="item4line1 mt10"  id="goods">
+<ul class="pro_lst clearfix">
+<foreach name="recomm" item="recomm">
+<li>
+<div class="itm_box">
+    <div class="hd">
+        <a href="__MODULE__/Info/index?id={$recomm['id']}" target="_blank"><img src="__PUBLIC__/Home/images/carousel/{$recomm['picname']}" width="160" height="160" alt="商品名称" />
+        </a>
+    </div>
+    <div class="bd">
+        <p class="name"><a title="{$recomm['goods']}" href="__MODULE__/Info/index?id={$recomm['id']}" target="_blank">{$recomm['goods']}</a></p>
+        <div class="price">
+            <p>市场价:<del>&yen;{$recomm.price}</del></p>
+			<p class="fl cmdtyPrice price_no99956970" no="99956970">优购价：<em class="ygprc16">&yen;<i>{$recomm.discount}</i></em>({$recomm.disnum}折)</p>
+        </div>
+    </div>
+</div>
+</li>
+</foreach>
+</ul>
+</div>
+</div>
+</div>
+
+<!--商品推荐（一行4个商品）-->
+<div class="skin_box fss_rec_list" id="new">
+<div class="skin_box_hd">
+<h3 style="font-family:'黑体">  上架新品  </h3>
+<i class="hd_jt"></i>
+</div>
+<div class="skin_box_bd clearfix">
+<div class="item4line1 mt10">
+<ul class="pro_lst clearfix">
+<foreach name="newshop" item="voshop">
+<li>
+<div class="itm_box">
+    <div class="hd">
+        <a href="__MODULE__/Info/index?id={$voshop['id']}" target="_blank">
+        <img src="__PUBLIC__/Home/images/carousel/{$voshop['picname']}" width="160" height="160" alt="商品名称" />
+        </a>
+    </div>
+    <div class="bd">
+        <p class="name"><a title="{$voshop.goods}" href="__MODULE__/Info/index?id={$voshop['id']}" target="_blank">{$voshop.goods}</a></p>
+        <div class="price">
+            <p>市场价:<del>&yen;{$voshop.price}</del></p>
+			<p class="fl cmdtyPrice price_no99984272" no="99984272">优购价：<em class="ygprc16">&yen;<i>{$voshop.discount}</i></em>({$voshop.disnum}折)</p>
+        </div>
+    </div>
+</div>
+</li>
+</foreach>
+</ul>
+
+</div>
+
+</div>
+
+</div>
+<!--商品推荐（一行4个商品）-->
+<div class="skin_box fss_rec_list" id="clear">
+<div class="skin_box_hd">
+<h3 style="font-family:'黑体"> 断码清仓 </h3>
+<i class="hd_jt"></i>
+</div>
+<div class="skin_box_bd clearfix">
+<div class="item4line1 mt10">
+<ul class="pro_lst clearfix">
+<foreach name="clear" item="clear">
+<li>
+<div class="itm_box">
+    <div class="hd">
+        <a href="__MODULE__/Info/index?id={$clear['id']}" target="_blank">
+        <img src="__PUBLIC__/Home/images/carousel/{$clear['picname']}" width="160" height="160" alt="商品名称" />
+        </a>
+    </div>
+    <div class="bd">
+        <p class="name"><a title="{$clear.goods}" href="__MODULE__/Info/index?id={$clear['id']}" target="_blank">{$clear.goods}</a></p>
+        <div class="price">
+            <p>市场价:<del>&yen;{$clear.price}</del></p>
+			<p class="fl cmdtyPrice price_no100010305" no="100010305">优购价：<em class="ygprc16">&yen;<i>{$clear.discount}</i></em>({$clear.disnum}折)</p>
+        </div>
+    </div>
+</div>
+</li>
+</foreach>
+</ul>
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<!--商品推荐（一行4个商品）end-->
+</div>
+</div>
+<div class="fss_lyt fss_lyt_one">
+<div class="fss_colmain fss_col">
+<!--猜您喜欢模块(950)-->
+<div class="skin_box fss_ylk_list" id="guess">
+<div class="skin_box_hd"><h3>猜您喜欢</h3></div>
+<div class="skin_box_bd clearfix">
+<div class="lr_scroll_box">
+<a class="scroll prev js_scroll_prev" href="javascript:;"></a>
+<a class="scroll next js_scroll_next" href="javascript:;"></a>
+<div class="scroll_page js_scroll_page"></div>
+<div class="scroll_trg"></div>
+<div class="scroll_box">
+<ul class="pro_lst clearfix">
+<foreach name="guess" item="guess">
+<li>
+    <div class="itm_box">
+        <div class="hd">
+             <a href="__MODULE__/Info/index?id={$guess['id']}" target="_blank">
+                <img src="__PUBLIC__/Home/images/carousel/{$guess['picname']}" width="160" height="160" alt="{$guess.goods}" />
+            </a>
+        </div>
+        <div class="bd">
+            <p class="name"><a title="{$guess.goods}" href="__MODULE__/Info/index?id={$guess['id']}" target="_blank">{$guess.goods}</a></p>
+           <div class="price">
+            <p>市场价:<del>&yen;{$guess.price}</del></p>
+            <p class="fl cmdtyPrice price_no100040738" no="100040738">优购价:<em class="ygprc16">&yen;<i>{$guess.discount}</i></em>({$guess.disnum}折)</p>
+           </div>
+        </div>
+    </div>
+</li>
+</foreach>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<!--猜您喜欢模块(950)end-->
+</div>
+</div>
+</div> 
+</div>
+
+<script type="text/javascript">
+
+    //关键字搜索
+    var shopid = $("#shopid").val();
+    var goods = document.getElementById("goods");
+    $("#search").click(function(){
+        if($("#key").val() == ""){
+            alert('输入值为空');
+        }else{
+            var key = $("#key").val();
+            $("#guess").remove();
+            $("#clear").remove();
+            $("#new").remove();
+            $.post('__CONTROLLER__/getGoods',{key:key,shopid:shopid},function(data){
+                var datas = eval("("+data+")");
+                var str;
+                str = '<ul class="pro_lst clearfix">';
+                for(var i in datas){
+                    var disnum = datas[i]['discount'] / datas[i]['price'] * 10;
+                    disnum = disnum.toFixed(1);
+                    $('#text').text('搜索到的商品:');
+                        str = str + "<li>";
+                        str = str + '<div class="itm_box">';
+                        str = str + '<div class="hd">';
+                            str = str + '<a href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank"><img src="__PUBLIC__/Home/images/carousel/'+datas[i]['picname']+'" width="160" height="160" alt="商品名称" /></a>';        
+                            str = str + '</div>';
+                            str = str + '<div class="bd">';
+                            str = str + '<p class="name"><a title="{$recomm['goods']}" href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank">'+datas[i]["goods"]+'</a></p>';
+                            str = str + '<div class="price"><p>市场价:<del>&yen;'+datas[i]["price"]+'</del></p><p class="fl cmdtyPrice price_no100010305" no="100010305">优购价：<em class="ygprc16">&yen;<i>'+datas[i]["discount"]+'</i></em>('+disnum+'折)</p></div>';
+                        str = str + '</div>';
+                        str = str + "</div>";
+                    str = str + "</li>";
+                    
+                }
+                str = str + "</ul>";
+                goods.innerHTML = str;
+            })
+        }
+    })
+
+    //全部商品
+    $("#getAll").click(function(){        
+        $("#guess").remove();
+        $("#clear").remove();
+        $("#new").remove();
+        $.post('__CONTROLLER__/getAll',{shopid:shopid},function(data){
+            // alert(data);
+            var datas = eval("("+data+")");
+            var str;
+            str = '<ul class="pro_lst clearfix">';
+            for(var i in datas){
+                var disnum = datas[i]['discount'] / datas[i]['price'] * 10;
+                disnum = disnum.toFixed(1);
+                $('#text').text('本店所有商品:');
+                    str = str + "<li>";
+                    str = str + '<div class="itm_box">';
+                    str = str + '<div class="hd">';
+                        str = str + '<a href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank"><img src="__PUBLIC__/Home/images/carousel/'+datas[i]['picname']+'" width="160" height="160" alt="商品名称" /></a>';        
+                        str = str + '</div>';
+                        str = str + '<div class="bd">';
+                        str = str + '<p class="name"><a title="{$recomm['goods']}" href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank">'+datas[i]["goods"]+'</a></p>';
+                        str = str + '<div class="price"><p>市场价:<del>&yen;'+datas[i]["price"]+'</del></p><p class="fl cmdtyPrice price_no100010305" no="100010305">优购价：<em class="ygprc16">&yen;<i>'+datas[i]["discount"]+'</i></em>('+disnum+'折)</p></div>';
+                    str = str + '</div>';
+                    str = str + "</div>";
+                str = str + "</li>";
+                
+            }
+            str = str + "</ul>";
+            goods.innerHTML = str;
+        })
+    });
+    
+    //获取分类内的商品
+    $("span[name=types]").click(function(){        
+        $("#guess").remove();
+        $("#clear").remove();
+        $("#new").remove();
+        var type = $(this).text();
+        $.post('__CONTROLLER__/getType',{type:type},function(data){
+            // alert(data);
+            var datas = eval("("+data+")");
+            var str;
+            str = '<ul class="pro_lst clearfix">';
+            // 循环li里的内容
+            for(var i in datas){
+                var disnum = datas[i]['discount'] / datas[i]['price'] * 10;
+                disnum = disnum.toFixed(1);
+                $('#text').text(type+':');
+                    str = str + "<li>";
+                    str = str + '<div class="itm_box">';
+                    str = str + '<div class="hd">';
+                        str = str + '<a href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank"><img src="__PUBLIC__/Home/images/carousel/'+datas[i]['picname']+'" width="160" height="160" alt="商品名称" /></a>';        
+                        str = str + '</div>';
+                        str = str + '<div class="bd">';
+                        str = str + '<p class="name"><a title="{$recomm['goods']}" href="__MODULE__/Info/index?id='+datas[i]["id"]+'" target="_blank">'+datas[i]["goods"]+'</a></p>';
+                        str = str + '<div class="price"><p>市场价:<del>&yen;'+datas[i]["price"]+'</del></p><p class="fl cmdtyPrice price_no100010305" no="100010305">优购价：<em class="ygprc16">&yen;<i>'+datas[i]["discount"]+'</i></em>('+disnum+'折)</p></div>';
+                    str = str + '</div>';
+                    str = str + "</div>";
+                str = str + "</li>";
+                
+            }
+            str = str + "</ul>";
+            goods.innerHTML = str;
+        })
+    })
+   
+</script>
+
+</block>
+<block name="js"></block>	

@@ -1,0 +1,127 @@
+<extend name="Public:lists" />
+<block name="js_css">
+
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/fss.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/channel.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/ygdialog.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/ucenter_v2.css">	
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/bdsstyle.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/thickbox.css">
+
+    <link href="__PUBLIC__/Home/css/base.css?2.9.4" type="text/css" rel="stylesheet" />
+    <link href="__PUBLIC__/Home/list/css/base-2.css?2.9.4" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/list.js"></script>
+	<style type="text/css">
+/* container */
+#container{width:940px;margin:50px auto;}
+#container ul{width:300px;list-style:none;float:left;margin-right:20px;}
+#container ul li{
+    margin-bottom:20px;
+    
+    -moz-border-bottom-colors:none;
+    -moz-border-left-colors:none;
+    -moz-border-right-colors:none;
+    -moz-border-top-colors:none;
+    background-color:#fff;
+    background-image:linear-gradient(to bottom, #FFFFFF, #E6E6E6);
+    background-repeat:repeat-x;
+    border-color:#e6e6e6 #e6e6e6 #B3B3B3;
+    border-image:none;
+    border-radius:4px 4px 4px 4px;
+    border-style:solid;
+    border-width:1px;
+    box-shadow:0 1px 0 rgba(255, 255, 255, 0.2) inset, 0 1px 2px rgba(0, 0, 0, 0.05);  
+}
+#container ul li img{width:298px;}
+.water_user{color:#666;padding:10px;}
+.water_option{background:#f5f5f5;border-top:1px #f0f0f0 solid;padding:5px 0 5px 10px;}
+.water_option:after{content:"";display:block;clear:both;visibility:hidden;}
+.water_option .option_item,.water_option .split{float:right;}
+.water_option .option_item{color:#3e88cd;text-decoration:none;margin-right:10px;}
+.water_option .option_item:hover{ text-decoration:underline;}
+.water_option .split{display:inline-block;margin:5px 10px 0 0;height:12px;width:1px;background-color:#D8D8D8;}
+
+.loadMeinvMOre{height:30px;line-height:30px;color:#999;text-align:center;background:#f9f9f9;display:block;clear:both;text-decoration:none;}
+.loadMeinvMOre:hover{ background:#f0f0f0;color:#666;}
+</style>
+	</style> 
+</block>
+<block name="content">
+	<div class="notice_open_content">
+		<div class="content tleft"><div align="center">{$row[0].content}</div></div>
+	</div>
+<!-- 	<div  style="margin:auto;width:1187px;"><h2 class="ygGuidTit">商品展示</h2>
+		<div>
+<div id="container">
+
+	<ul class="col">
+		<li>
+			<div class="water_pic"><a href=""><img alt="" src="demo_data/1.jpg"></a></div>
+			<div class="water_user">1</div>
+			<div class="water_option">
+				<a class="option_item" href="">收藏 4</a>
+				<span class="split"></span>
+				<a class="option_item option_comt" href="">评论 8</a>
+				<span class="split"></span>
+				<a class="option_item option_relay" href="">转播 124</a>
+			</div>
+		</li>
+		<li>
+			<div class="water_pic"><a href=""><img alt="" src="demo_data/2.jpg"></a></div>
+			<div class="water_user">2</div>
+			<div class="water_option">
+				<a class="option_item" href="">收藏 4</a>
+				<span class="split"></span>
+				<a class="option_item option_comt" href="">评论 8</a>
+				<span class="split"></span>
+				<a class="option_item option_relay" href="">转播 124</a>
+			</div>
+		</li>
+		<li>
+			<div class="water_pic"><a href=""><img alt="" src="demo_data/3.jpg"></a></div>
+			<div class="water_user">3</div>
+			<div class="water_option">
+				<a class="option_item" href="">收藏 4</a>
+				<span class="split"></span>
+				<a class="option_item option_comt" href="">评论 8</a>
+				<span class="split"></span>
+				<a class="option_item option_relay" href="">转播 124</a>
+			</div>
+		</li>
+	<li>
+		<div class="water_pic"><a href="#"><img src="demo_data/6.jpg"></a></div>
+		<div class="water_user">6</div>
+		<div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div>
+
+	</li>
+	<li>
+		<div class="water_pic"><a href="#"><img src="demo_data/22.jpg"></a></div>
+		<div class="water_user">22</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div>
+	</li>
+	<li>
+		<div class="water_pic"><a href="#"><img src="demo_data/8.jpg"></a></div>
+		<div class="water_user">8</div>
+		<div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div>
+	</li>
+	<li>
+		<div class="water_pic"><a href="#"><img src="demo_data/13.jpg"></a></div>
+		<div class="water_user">13</div>
+		<div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div>
+	</li>
+	<li>
+		<div class="water_pic"><a href="#"><img src="demo_data/16.jpg"></a></div><div class="water_user">16</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/9.jpg"></a></div><div class="water_user">9</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/21.jpg"></a></div><div class="water_user">21</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/23.jpg"></a></div><div class="water_user">23</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/3.jpg"></a></div><div class="water_user">3</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/24.jpg"></a></div><div class="water_user">24</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/9.jpg"></a></div><div class="water_user">9</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/10.jpg"></a></div><div class="water_user">10</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/0.jpg"></a></div><div class="water_user">0</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/2.jpg"></a></div><div class="water_user">2</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li></ul>
+	
+	<ul class="col"><li><div class="water_pic"><a href="#"><img src="demo_data/13.jpg"></a></div><div class="water_user">13</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/9.jpg"></a></div><div class="water_user">9</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/8.jpg"></a></div><div class="water_user">8</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/11.jpg"></a></div><div class="water_user">11</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/12.jpg"></a></div><div class="water_user">12</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/3.jpg"></a></div><div class="water_user">3</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/11.jpg"></a></div><div class="water_user">11</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/15.jpg"></a></div><div class="water_user">15</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/2.jpg"></a></div><div class="water_user">2</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/10.jpg"></a></div><div class="water_user">10</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/10.jpg"></a></div><div class="water_user">10</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/2.jpg"></a></div><div class="water_user">2</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/1.jpg"></a></div><div class="water_user">1</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/14.jpg"></a></div><div class="water_user">14</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/4.jpg"></a></div><div class="water_user">4</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/2.jpg"></a></div><div class="water_user">2</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/12.jpg"></a></div><div class="water_user">12</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/22.jpg"></a></div><div class="water_user">22</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li></ul>
+	
+	<ul style="margin-right:0" class="col"><li><div class="water_pic"><a href="#"><img src="demo_data/10.jpg"></a></div><div class="water_user">10</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/11.jpg"></a></div><div class="water_user">11</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/21.jpg"></a></div><div class="water_user">21</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/5.jpg"></a></div><div class="water_user">5</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/9.jpg"></a></div><div class="water_user">9</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/19.jpg"></a></div><div class="water_user">19</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/15.jpg"></a></div><div class="water_user">15</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/6.jpg"></a></div><div class="water_user">6</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/5.jpg"></a></div><div class="water_user">5</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="demo_data/17.jpg"></a></div><div class="water_user">17</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/23.jpg"></a></div><div class="water_user">23</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/4.jpg"></a></div><div class="water_user">4</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/23.jpg"></a></div><div class="water_user">23</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/24.jpg"></a></div><div class="water_user">24</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/12.jpg"></a></div><div class="water_user">12</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/13.jpg"></a></div><div class="water_user">13</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/9.jpg"></a></div><div class="water_user">9</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li><li><div class="water_pic"><a href="#"><img src="img/17.jpg"></a></div><div class="water_user">17</div><div class="water_option"><a class="option_item" href="">收藏 4</a> <span class="split"></span><a class="option_item option_comt" href="">评论 8</a><span class="split"></span><a class="option_item option_relay" href="">转播 124</a></div></li></ul>
+	
+	<a id="loadMeinvMOre" class="loadMeinvMOre" href="javascript:">加载更多</a>
+	
+</div>	
+		</div>
+
+	</div>	 -->
+
+</block>

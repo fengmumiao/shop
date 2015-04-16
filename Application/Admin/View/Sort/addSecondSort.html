@@ -1,0 +1,39 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+添加分类 >> 添加二级分类
+</block>
+<block name="right">
+<table>
+<form role="form" action="__CONTROLLER__/addSecondSortDo" onsubmit="return fun()" method="post">
+	<div class="col-md-2" style="margin:45px 0 0 120px">
+		<div style="font-size:14px;font-weight:bolder">
+			请选择一级分类：
+		</div>
+		<select class="form-control" name="pid">
+			<option>请选择</option>
+			<foreach name="row" item="vo">
+			  	<option value="{$vo.id}">{$vo.name}</option>
+		  	</foreach>
+		</select>
+	</div>
+	<div class="form-group" style="margin:125px 0 0 123px;font-size:14px;">
+	  	<div class="col-md-4">
+		    <label for="exampleInputEmail1">请输入商品二级分类</label>
+		    <input type="text" name="name" class="form-control" id="type" placeholder="商品分类">
+    	</div>
+  	</div>
+  	<div style="font-size:14px;margin:225px 0 0 140px">
+  		<span style="font-weight:bolder;color:red">注意：</span>本页为商品二级分类页，请在提交之前确认输入的信息！
+  	</div>
+  	<div style="margin:35px 0 0 140px">
+  		<button id="btn" type="submit" class="btn btn-primary btn-lg">提交</button>
+  	</div>
+</form>
+</table>
+</block>

@@ -1,0 +1,218 @@
+<extend name="Public:lists" />
+<block name="title">{$title}</block>
+<block name="js_css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/fss.css">	
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/index.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/Flagship/channel.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/ygdialog.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/ucenter_v2.css">	
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/bdsstyle.css">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/Home/data/thickbox.css">
+
+    <link href="__PUBLIC__/Home/css/base.css?2.9.4" type="text/css" rel="stylesheet" />
+    <link href="__PUBLIC__/Home/list/css/base-2.css?2.9.4" type="text/css" rel="stylesheet" />
+    <script type="text/javascript" src="__PUBLIC__/Home/js/jquery.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/list.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/Home/js/orderSet.js"></script>
+</block>
+<block name="content">
+<div class="cen clearfix">
+<div class="u_leftxin u_leftxin fl mgr10" id="umenu">
+    <div class="wdygtit"><a href=""><span>我的优购</span></a></div>
+    <ul class="jiaoyizx">
+        <li class="ultit">交易中心</li>
+        <li class="myorderli"><a href="__APP__/OrderSet"><span>我的订单</span></a></li>
+        <li class="myfavorli"><a href=""><span>我的收藏</span></a></li>
+        <li class="mydatingbuyli"><a href=""><span>我的预约</span></a></li>
+        <li class="mycommentli"><a href=""><span>商品评论/晒单</span></a></li>
+        <li class="msgli"><a href=""><span id="uc_msg_count">站内消息<i class="huise">（<em>0</em>）</i></span></a></li>
+    </ul>
+    <ul class="wodezc">
+        <li class="ultit">我的资产</li>
+        <li class="mycouponli"><a href=""><span id="my_coupon_tick">我的优惠券</span></a></li>
+        <li class="giftcardli"><a href=""><span id="my_giftcard_tick">我的礼品卡</span></a></li>
+        <li class="mypointli"><a href="__APP__/Total"><span id="my_point_tick">我的积分</span></a></li>
+    </ul>
+    <ul class="gerensz">
+        <li class="ultit">个人设置</li>
+        <li class="myinfoli"><a href="__APP__/Data"><span>个人资料</span></a></li>
+        <li class="safesetli"><a href="__APP__/Personal"><span id="uc_safe_level">安全设置</span></a></li>
+        <li class="myaddrli"><a href=""><span>我的收货地址</span></a></li>
+    </ul>
+    <ul class="shouhoufw">
+        <li class="ultit">售后服务</li>
+        <li class="afterservli"><a href=""><span>查看退换货</span></a></li>
+        <li class="appservli"><a href=""><span>申请退换货</span></a></li>
+    </ul>
+</div>
+    <!--左侧公共部分 end-->
+<div id="myorder" class="uc_right fr">
+<form action="/my/order.jhtml" name="searchForm" id="searchForm" method="post">
+<div class="uc_orderfilter" style="margin-left:-180px;">
+<h2 class="uc_odrfiltertit">我的订单</h2>
+<div class="uc_orderselect">
+    <p class="uc_fll"></p>
+    <div class="uc_selectsty uc_select_6m">
+        <input disabled="disabled" class="uc_selchecked" value="&nbsp;6个月以内订单" id="orderCreateTime" type="text">
+        <ul class="uc_selectpop" style="display: none;">
+            <input class="orderfilterKV" name="orderCreateTime" value="" type="hidden">
+
+        </ul>
+        <p class="dropdownbtn dropdowntgt">
+            <span class="dropdowntgt"></span>
+        </p>
+    </div>
+  <!--   <div class="uc_selectsty uc_select_stat">
+        <input disabled="disabled" class="uc_selchecked" value="所有状态" id="status" type="text">
+        <ul class="uc_selectpop" style="display: none;">
+            <input class="orderfilterKV" name="status" value="0" type="hidden">
+            <li value="0">所有状态</li>
+            <li value="1">订单生成</li>
+            <li value="2">配货中</li>
+            <li value="3">已发货</li>
+            <li value="4">已取消</li>
+        </ul>
+        <p class="dropdownbtn dropdowntgt">
+            <span class="dropdowntgt"></span>
+        </p>
+    </div>
+
+    <div class="uc_selectsty uc_select_paystat">
+        <input disabled="disabled" class="uc_selchecked" value="支付状态" id="payStatus" type="text">
+        <ul class="uc_selectpop" style="display: none;">
+            <input class="orderfilterKV" name="payStatus" value="0" type="hidden">
+            <li value="0">支付状态</li>
+            <li value="1">已支付</li>
+            <li value="2">未支付</li>
+        </ul>
+        <p class="dropdownbtn dropdowntgt">
+            <span class="dropdowntgt"></span>
+        </p>
+    </div> -->
+    <a class="uc_ordersearchbtn">搜索订单</a>
+    <div class="uc_ordersearch" style="margin-left:-180px;">
+        <input id="searchCriteria"  name="searchCriteria" value="订单号" type="text">
+    </div>
+</div>
+</div>
+<input value="14165401902671132" name="t" type="hidden">
+</form>
+
+<!--我最近的订单 start-->
+<div class="zjorder" style="margin-left:-180px;">
+    <form name="buyFormObj0" id="buyFormObj0" method="post" target="_blank">
+        <input name="orderNo" id="orderNo0" value="A641118030014" type="hidden">
+        <input name="orderRouteWay" value="user" type="hidden">
+    </form>
+    <!--主订单1 start-->
+    <div class="seek">
+   <foreach name="orderParent" item="orders"> 
+    <table class="zjorderbody2" style="border:1px solid #E3E3E3;" width="200" cellpadding="0" cellspacing="1">
+        <colgroup>
+            <col width="571">
+            <col width="106">
+            <col width="153">
+        </colgroup>
+        <thead style="border:1px solid #E3E3E3;">
+            <tr>
+                <th colspan="3" style="border:1px solid #E3E3E3;">
+                    <span>主订单号：{$orders.ordernumber}</span>
+                    <span>下单时间：{$orders.addtime}</span>
+                    <span>支付方式：
+                        <if condition="$orders.buytype eq 0">
+                            在线支付
+                        </if>
+                    <!-- <font class="Gray">(未支付)</font></span> -->
+                </th>
+            </tr>
+        </thead>
+<tbody style="border:1px solid #E3E3E3;">
+<foreach name="orders.orr" item="or">
+<tr style="border:1px solid #E3E3E3;">
+<td style="border:1px solid #E3E3E3;">
+<!--子订单1 start-->
+<div class="uc_goods_item uc_myorder_item relative clearfix">
+<p class="uc_goods_top">
+<span>子订单号：{$or.ordernumber}</span>
+<span>商品数量：{$or.num}件</span>
+<span>状态：<strong class="f_yellow">
+<if condition="$or.status eq 0">
+等待发货
+</if>
+<if condition="$or.status eq 1">
+<a class="take" style="width:100px;border:1px solid #ccc;height:50px;line-height:50px;">确认收货</a>
+<input class="num" type="hidden" value="{$or.ordernumber}"/>
+</if>
+<if condition="$or.status eq 2">
+已收货
+</if>
+<if condition="$or.status eq 3">
+已退货
+</if>
+</strong>
+
+</span>
+</p>
+<div class="uc_goods_lt clearfix ">
+<dl class="uc_goods_list relative clearfix">
+<dt class="info1 relative">
+<a href="/Info/index/id/{$or.goodsid}" target="_blank">
+<img src="{$or.img}" alt="{$or.name}" title="{$or.name}" height="60" width="60">
+</a>
+</dt>
+<dd class="info2">
+<p><a href="/Info/index/id/{$or.goodsid}" target="_blank" class="f_blue">{$or.name}</a>
+</p>
+<p><em class="Gray">收货地址：</em>{$or.address}</p>
+<p>     
+
+</p> 
+</dd>
+<dd class="info3">
+<p><strong>¥</strong>{$or.price}
+</p>
+<p class="act_tips"><span><i></i></span>限时抢</p>
+
+</dd>
+<dd class="info4">{$or.num}件</dd>
+<dd class="info5 clearfix"></dd>
+<dd class="infoReturn">
+</dd>
+</dl>
+</div>
+<div class="uc_goods_lt clearfix ">
+</div>
+</div>
+</td>
+<td>
+<div class="goodsmn">
+<p class="mncount">{$or.price}元</p>
+<!-- <p class="hui">已优惠510元</p> -->
+<p class="hui">
+(免运费)
+</p>
+</div>
+</td>
+<td>
+<div class="pingjia">
+<p style="text-align:center">
+<a href="__APP__/Lists" onclick="">继续购买</a>
+</p>
+</div>
+</td>
+</tr>
+</foreach>
+</tbody>
+    </table>
+</foreach>
+</div>
+    <!--主订单1 end-->
+</div>
+<p class="blank10"></p>
+
+<!--我最近的订单 end-->
+</div>
+</div>
+<p class="blank20"></p>
+<!--调查问卷入口-->
+</block>	

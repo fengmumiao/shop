@@ -1,0 +1,43 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+添加分类 >> 添加一级分类
+</block>
+
+<block name="right">
+<table>
+<form role="form" action="__CONTROLLER__/addSortDo" onsubmit="return fun()" method="post">
+  	<div class="form-group" style="margin-left:100px;margin-top:40px">
+	  	<div class="col-md-4">
+		    <label for="exampleInputEmail1">请输入商品一级分类</label>
+		    <input type="text" name="name" class="form-control" id="type" placeholder="商品分类">
+    	</div>
+  	</div>
+  	<div style="float:left;margin:150px 0 0 -340px">
+  		<button id="btn" type="submit" class="btn btn-primary">提交</button>
+  	</div>
+  	<div style="float:left;font-size:12px;margin-top:90px;margin-left:-340px"><span style="color:red">注意：</span>请输入一级分类，如：男鞋、女鞋、童装等</div>
+</form>
+</table>
+<script type="text/javascript">
+	var flag;
+	var btn = document.getElementById("btn");
+	var type = document.getElementById("type");
+	btn.onclick = function(){
+		if(type.value.length == 0){
+			flag = false;
+			alert('一级分类不能为空');
+		}else{
+			flag = true;
+		}
+	}
+	function fun(){
+		return flag;
+	}
+</script>
+</block>

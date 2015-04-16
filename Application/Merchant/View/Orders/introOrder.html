@@ -1,0 +1,57 @@
+<extend name="Public:layout" />
+<block namee="title">商家管理-会员订单</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+<block name="orders">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-tint"></i> <span>订单管理</span><span class="label">2</span></a>
+		<ul>
+			<li><a href="__MODULE__/Orders/effectiveOrder">待解决订单</a></li>
+			<li><a href="__MODULE__/Orders/finishedOrder">已完成订单</a></li>
+		</ul>
+
+	</li>
+</block>
+<block name="content">
+<br>
+<h3>订单详情</h3>
+<table class="table table-hover">
+<tr align="center">
+	<td><br>
+		<b>商品名称:</b><span style="color:red"> {$result[0]['name']}</span><br/>
+		<br>
+		<img src="{$result[0]['img']}" width="400px">
+	</td>
+	
+</tr>
+<tr align="center">
+	<td>
+		单价:<span style="color:red;font-size:20px">{$result[0]['price']/$result[0]['num']}</span>　　　　　数量：<span style="color:red;font-size:20px">{$result[0]['num']}</span>　　　　　小计：<span style="color:red;font-size:20px">{$res[0]['total']}</span>
+	</td>
+</tr>
+	
+</table>
+<h4 align="center">用户相关信息</h4>
+<table class="table table-hover table-striped">
+
+	<tr>
+		<th>用户名</th>
+		<th>联系人</th>
+		<th>地址</th>
+		<th>电话</th>
+		<th>下单时间</th>
+	</tr>
+	<tr align="center">
+
+		<td>{$resu[0]['buyuser']}</td>
+		<td>{$res[0]['linkname']}</td>
+		<td>{$res[0]['address']}</td>
+		<td>{$res[0]['phone']}</td>
+		<td>{$res[0]['addtime']|date="Y-m-d H:i:s",###}</td>
+	</tr>
+	<tr align="center">
+	<td colspan="5"><a href="effectiveOrder" class="btn btn-primary btn-lg">回到订单列表</a></td>
+	</tr>
+</table>
+</block>

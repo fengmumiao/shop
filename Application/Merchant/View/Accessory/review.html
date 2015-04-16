@@ -1,0 +1,58 @@
+<extend name="Public:layout" />
+<block namee="title">商家管理-未回复留言</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+</block> 
+<block name="accessoryMana">	
+				<li class="submenu active open">
+					<a href="#"><i class="icon icon-th-list"></i> <span>附属管理</span><span class="label">5</span></a>
+					<ul>
+						<li class="active"><a href="__MODULE__/Accessory/notMessage">未回复留言</a></li>
+						<li><a href="__MODULE__/Accessory/searchMessage">回复内容</a></li>
+					</ul>
+				</li>
+			</block>	
+
+<block name="content">
+<br/>
+<h3>回复留言</h3>
+				<center>
+				<img src="__PUBLIC__/Merchant/img/warning.gif">
+				<br />
+				<br />
+				<br />
+				<br />
+				<button type="button" class="btn btn-warning btn-lg" data-toggle="modal" data-target="#myModal">点此回复</button>
+
+
+				</center>
+	
+
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">留言回复</h4>
+      </div>
+      
+      <form action="doreview" method="post">
+      
+      <div class="modal-body">
+       <p><b style="color:blue">{$dat[0]['uname']}:</b> {$dat[0]['review']}<br/></p>
+  		<input type="hidden" name='uname' value={$dat[0]['uname']}>
+      </div>
+      <div class="modal-footer">
+      	<b style="color:green;">{$_SESSION['salename']}:</b>
+      	<textarea name="replay" cols='50' rows="6" placeholder="请请输入回复内容"></textarea> 
+      	
+        	<button type="submit" class="btn btn-primary" >发表回复</button>
+      </div>
+     </form>
+
+    </div>
+  </div>
+</div>
+	
+</block>

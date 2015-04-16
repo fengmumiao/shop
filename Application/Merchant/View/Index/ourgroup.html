@@ -1,0 +1,80 @@
+
+<extend name="Public:layout" />
+<block name="content">
+<br/>
+<h2 align="center" style="color:purple">
+三合网络
+</h2>
+<link href="__PUBLIC__/Merchant/group/css/style.css" type="text/css" rel="stylesheet" />
+<div class="qixi">
+
+    <div class="relian">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/relian.jpg" /> <img src="__PUBLIC__/Merchant/group/images/relian2.jpg" /> </div>
+        </div>
+    </div>
+
+    <div class="miyue">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/miyue.jpg" /> <img src="__PUBLIC__/Merchant/group/images/miyue2.jpg" /> </div>
+        </div>
+    </div>
+    
+    <div class="qinzi">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/qinzi.jpg" /> <img src="__PUBLIC__/Merchant/group/images/qinzi2.jpg" /> </div>
+        </div>
+    </div>
+
+    <div class="jiqing">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/jiqing.jpg" /> <img src="__PUBLIC__/Merchant/group/images/jiqing2.jpg" /> </div>
+        </div>
+    </div>
+
+    <div class="xfq">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/xfq.jpg" /> <img src="__PUBLIC__/Merchant/group/images/xfq2.jpg" /> </div>
+        </div>
+    </div>
+
+    <div class="qianshou">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/qianshou.jpg" /> <img src="__PUBLIC__/Merchant/group/images/qianshou2.jpg" /> </div>
+        </div>
+    </div>
+    
+    <div class="jiqing2">
+        <div class="pic">
+            <div class="pic2"> <img src="__PUBLIC__/Merchant/group/images/jiqing3.jpg" /> <img src="__PUBLIC__/Merchant/group/images/jiqing4.jpg" /> </div>
+        </div>
+    </div>
+    
+</div>
+<br>
+<br>
+<br>
+<center>
+<p style="font-size:20px">
+    如有问题，请与三合网络联系<br>
+    电话：<span style="color:green;font-weight:800">15010831191</span>　　　
+    邮箱：<span style="color:green;font-weight:800">sanhe@lampbrother.net</span>
+</p>
+</center>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+    
+    $(".qixi > div").hover(function(){
+        $(this).find('.pic2').stop().animate({top:-$(this).find(".pic2 > img").height()},200);                          
+    },function(){
+        $(this).find('.pic2').stop().animate({top:'0'},200);    
+    });
+    
+});
+</script>
+
+</block>
+
+	

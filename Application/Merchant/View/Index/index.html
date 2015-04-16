@@ -1,0 +1,47 @@
+
+<extend name="Public:layout" />
+<block name="top">
+<!-- <img src="__PUBLIC__/Merchant/img/top.gif" name="top" width="100%"> -->
+<div name="topp" style="background:url('__PUBLIC__/Merchant/img/top.gif'); width:100%;height:435px">
+	
+</div>
+<script type="text/javascript">
+	// $("div[name=topp]").slideToggle(5000)
+	$("div[name=topp]").delay(4000)
+	$("div[name=topp]").slideUp(4000)	
+</script>
+</block>
+<block name="content">
+	<link href="__PUBLIC__/Merchant/rank/css/zzsc.css" rel="stylesheet" />
+	<script type="text/javascript" src="__PUBLIC__/Merchant/rank/js/jquery-1.7.2.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/Merchant/rank/js/jquery.SuperSlide.js"></script>
+	<br/>	
+	
+	<center><img src="__PUBLIC__/Merchant/img/good.gif"></center>
+	<div class="m-slide" style="margin:30px auto">
+	<ul class="img" style="position: relative; width: 488px; height: 450px;">
+		<foreach name="picarr" item="vov">
+		<li style="position: absolute; width: 488px; left: 0px; top: 0px; display: list-item;">
+		<img src="/Public/Home/images/carousel/{$vov}"></li>
+		</foreach>
+	</ul>
+	<ul class="tab">
+	<foreach name="data" item="vo">
+		<li class=" on" style="height:119px" align="center"><a href="#" >
+		<span class="title">{$vo.goods} </span><span class="des">{$vo.intro} </span></a>
+		</li>
+	</foreach>
+	</ul>
+	<b class="bottom-shadow"></b>
+</div>
+<script type="text/javascript">jQuery(".m-slide").slide({ titCell:".tab li", mainCell:".img",effect:"fold", autoPlay:true});</script>
+<div style="text-align:center;clear:both;color:red;font-size:25px">
+<p>本店最佳商品排行,望店主再接再厉</p>
+<p>进行和谐,真诚的网络交易</p>
+</div>			
+	
+</block>
+
+
+		
+

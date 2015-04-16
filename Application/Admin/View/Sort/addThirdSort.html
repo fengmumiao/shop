@@ -1,0 +1,62 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+添加分类 >> 添加三级分类
+</block>
+<block name="right">
+<table>
+<form role="form" action="__MODULE__/Sort/addSortDo" onsubmit="return fun()" method="post">
+	<div class="col-md-2" style="margin:45px 0 0 100px">
+		<div style="font-size:14px;font-weight:bolder">
+			请选择一级分类：
+		</div>
+		<select class="form-control" id="firstSort">
+		  <option>请选择</option>
+		  <foreach name="row" item="vo">
+		  	<option value="{$vo.id}">{$vo.name}</option>
+		  </foreach>
+		</select>
+	</div>
+	<div class="col-md-2" style="margin:125px 0 0 -195px">
+		<div style="font-size:14px;font-weight:bolder">
+			请选择二级分类：
+		</div>
+		<select class="form-control" name="pid" id="second">
+		</select>
+	</div>
+	<div class="form-group" style="margin:205px 0 0 100px;font-size:14px;">
+	  	<div class="col-md-4">
+		    <label for="exampleInputEmail1">请输入商品三级分类</label>
+		    <input type="text" name="name" class="form-control" id="type" placeholder="商品分类">
+    	</div>
+  	</div>
+  	<div style="font-size:14px;margin:285px 0 0 118px">
+  		<span style="font-weight:bolder;color:red">注意：</span>本页为商品三级分类添加页，请在提交之前确认输入的信息！
+  	</div>
+  	<div style="margin:35px 0 0 118px">
+  		<button id="btn" type="submit" class="btn btn-primary btn-lg">提交</button>
+  	</div>
+</form>
+</table>
+<script type="text/javascript">
+	var second = document.getElementById("second");
+	$('#firstSort').change(function(data){
+		var val = $('#firstSort').val();
+		$.post('__CONTROLLER__/selectSecond',{'pid':val},function(data){
+			var datas = eval("("+data+")");
+			var str = "<option>请选择</option>";
+		  	for(var i in datas){
+		  		str = str + "<option value="+datas[i]['id']+">"+datas[i]['name']+"</option>";
+		  	}
+		  	second.innerHTML=str;
+		});
+	})
+		  	
+  	
+</script>
+</block>

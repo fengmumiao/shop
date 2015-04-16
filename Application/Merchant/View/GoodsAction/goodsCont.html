@@ -1,0 +1,26 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-添加商品属性</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+<block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li class="active"><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+		</ul>
+	</li>
+</block>
+<block name="content">
+<br/>
+	<center>
+	<p style="color:red;font-size:30px"><b>工作人员会认真审核商品信息</b></p>
+	<br/>
+	<p style="color:red;font-size:30px"><b>请填写商品真实内容</b></p>
+	<p><a href="goodsAttr?goodsid={$_GET['goodsid']}" class="btn btn-primary btn-lg">继续添加不同颜色的该商品</a></p>
+	<br/>
+	<p><a href="goodsMana" class="btn btn-primary btn-lg">取消继续添加</a></p>
+	</center>
+</block>

@@ -1,0 +1,44 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+修改分类分类
+</block>
+
+<block name="right">
+<table>
+<form role="form" action="__MODULE__/Sort/editSortDo" onsubmit="return fun()" method="post">
+  	<input type="hidden" name="id" value="{$row['id']}">
+  	<div class="form-group" style="margin-left:100px;margin-top:40px">
+	  	<div class="col-md-4">
+		    <label for="exampleInputEmail1">正在修改的分类名</label>
+		    <input type="text" name="name" class="form-control" id="type" placeholder="{$row['name']}">
+    	</div>
+  	</div>
+  	<div style="float:left;margin:150px 0 0 -340px">
+  		<button id="btn" type="submit" class="btn btn-primary">确认修改</button>
+  	</div>
+  	<div style="float:left;font-size:12px;margin-top:90px;margin-left:-340px"><span style="color:red">注意：</span>确认修改前，请仔细检查！</div>
+</form>
+</table>
+<script type="text/javascript">
+	var flag;
+	var btn = document.getElementById("btn");
+	var type = document.getElementById("type");
+	btn.onclick = function(){
+		if(type.value.length == 0){
+			flag = false;
+			alert('分类名不能为空');
+		}else{
+			flag = true;
+		}
+	}
+	function fun(){
+		return flag;
+	}
+</script>
+</block>

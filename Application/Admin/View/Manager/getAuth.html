@@ -1,0 +1,164 @@
+<extend name="public:layout" />
+<block name="position">
+管理员 >> 管理员权限设置
+</block>
+<block name="right">
+<form action="__CONTROLLER__/setAuth" method="post">
+<input type="hidden" name="id" value="{$arr['id']}">
+<input type="hidden" id="auth" value="{$arr['rules']}">
+<table class="table table-hover table-striped table-bordered">
+
+	<tr>
+		<td>
+			审核管理：&nbsp;&nbsp;<input type="checkbox" id="chk1" name="auth[]" value="1,2,3,4">&nbsp;&nbsp;&nbsp;&nbsp;审核商品
+			
+			<input type="checkbox" id="chk2" name="auth[]" value="5,6,7">&nbsp;&nbsp;审核闪团
+			<input type="checkbox" id="chk3" name="auth[]" value="8,9,10,11">&nbsp;&nbsp;审核商铺
+		</td>		
+	</tr>
+	<tr>
+		<td>
+			管理员：&nbsp;&nbsp;
+			<input type="checkbox" id="chk4" name="auth[]" value="12,13">&nbsp;&nbsp;修改密码
+			<input type="checkbox" id="chk5" name="auth[]" value="14">&nbsp;&nbsp;退出登录
+			<input type="checkbox" id="chk6" name="auth[]" value="15,16,38">&nbsp;&nbsp;增加管理员
+			<input type="checkbox" id="chk7" name="auth[]" value="17,18,39,40">&nbsp;&nbsp;管理员状态
+		</td>
+	</tr>
+	<tr>
+		<td>
+			会员管理：&nbsp;&nbsp;
+			<input type="checkbox" id="chk8" name="auth[]" value="19,20,28">&nbsp;&nbsp;增加会员
+			<input type="checkbox" id="chk9" name="auth[]" value="21,22,23,24">&nbsp;&nbsp;修改会员基本信息&nbsp;&nbsp;
+			<input type="checkbox" id="chk10" name="auth[]" value="25">&nbsp;&nbsp;删除会员
+			<input type="checkbox" id="chk11" name="auth[]" value="26,27">&nbsp;&nbsp;禁用会员
+		</td>
+	</tr>
+	<tr>
+		<td>
+			友情链接：&nbsp;&nbsp;
+			<input type="checkbox" id="chk12" name="auth[]" value="30">&nbsp;&nbsp;查看链接
+			<input type="checkbox" id="chk15" name="auth[]" value="34,35">&nbsp;&nbsp;增加链接
+			<input type="checkbox" id="chk13" name="auth[]" value="31,32">&nbsp;&nbsp;修改链接
+			<input type="checkbox" id="chk14" name="auth[]" value="33">&nbsp;&nbsp;删除链接
+		</td>
+	</tr>
+	<tr>
+		<td>
+			商铺管理：&nbsp;&nbsp;
+			<input type="checkbox" id="chk16" name="auth[]" value="41,42,43">&nbsp;&nbsp;查看商铺
+			<input type="checkbox" id="chk17" name="auth[]" value="44,45">&nbsp;&nbsp;修改店铺信息
+			<input type="checkbox" id="chk18" name="auth[]" value="46">&nbsp;&nbsp;删除店铺
+			<input type="checkbox" id="chk19" name="auth[]" value="47,48">&nbsp;&nbsp;修改店铺状态
+		</td>
+	</tr>
+	<tr>
+		<td>
+			<a href="__CONTROLLER__/managerState"><span class="btn btn-primary">返回管理员状态</span></a> 
+			<button type="submit" class="btn btn-warning col-md-1">确认并提交</button>&nbsp;&nbsp;&nbsp;&nbsp;
+			
+		</td>
+	</tr>
+
+	</table>
+</form>
+<script type="text/javascript">
+	var inpsChk1 = document.getElementById("chk1");
+	var inpsChk2 = document.getElementById("chk2");
+	var inpsChk3 = document.getElementById("chk3");
+	var inpsChk4 = document.getElementById("chk4");
+	var inpsChk5 = document.getElementById("chk5");
+	var inpsChk6 = document.getElementById("chk6");
+	var inpsChk7 = document.getElementById("chk7");
+	var inpsChk8 = document.getElementById("chk8");
+	var inpsChk9 = document.getElementById("chk9");
+	var inpsChk10 = document.getElementById("chk10");
+	var inpsChk11 = document.getElementById("chk11");
+	var inpsChk12 = document.getElementById("chk12");
+	var inpsChk13 = document.getElementById("chk13");
+	var inpsChk14 = document.getElementById("chk14");
+	var inpsChk15 = document.getElementById("chk15");
+	var inpsChk16 = document.getElementById("chk16");
+	var inpsChk17 = document.getElementById("chk17");
+	var inpsChk18 = document.getElementById("chk18");
+	var inpsChk19 = document.getElementById("chk19");
+	// alert(inpsChk11.value);
+	var str = new String($("#auth").val());
+	var chk1 = str.search(inpsChk1.value);
+	if(chk1 != -1){
+		inpsChk1.setAttribute('checked','checked');
+	}
+	var chk2 = str.search(inpsChk2.value);
+	if(chk2 != -1){
+		inpsChk2.setAttribute('checked','checked');
+	}
+	var chk3 = str.search(inpsChk3.value);
+	if(chk3 != -1){
+		inpsChk3.setAttribute('checked','checked');
+	}
+	var chk4 = str.search(inpsChk4.value);
+	if(chk4 != -1){
+		inpsChk4.setAttribute('checked','checked');
+	}
+	var chk5 = str.search(inpsChk5.value);
+	if(chk5 != -1){
+		inpsChk5.setAttribute('checked','checked');
+	}
+	var chk6 = str.search(inpsChk6.value);
+	if(chk6 != -1){
+		inpsChk6.setAttribute('checked','checked');
+	}
+	var chk7 = str.search(inpsChk7.value);
+	if(chk7 != -1){
+		inpsChk7.setAttribute('checked','checked');
+	}
+	var chk8 = str.search(inpsChk8.value);
+	if(chk8 != -1){
+		inpsChk8.setAttribute('checked','checked');
+	}
+	var chk9 = str.search(inpsChk9.value);
+	if(chk9 != -1){
+		inpsChk9.setAttribute('checked','checked');
+	}
+	var chk10 = str.search(inpsChk10.value);
+	if(chk10 != -1){
+		inpsChk10.setAttribute('checked','checked');
+	}
+	var chk11 = str.search(inpsChk11.value);
+	if(chk11 != -1){
+		inpsChk11.setAttribute('checked','checked');
+	}
+	var chk12 = str.search(inpsChk12.value);
+	if(chk12 != -1){
+		inpsChk12.setAttribute('checked','checked');
+	}
+	var chk13 = str.search(inpsChk13.value);
+	if(chk13 != -1){
+		inpsChk13.setAttribute('checked','checked');
+	}
+	var chk14 = str.search(inpsChk14.value);
+	if(chk14 != -1){
+		inpsChk14.setAttribute('checked','checked');
+	}
+	var chk15 = str.search(inpsChk15.value);
+	if(chk15 != -1){
+		inpsChk15.setAttribute('checked','checked');
+	}
+	var chk16 = str.search(inpsChk16.value);
+	if(chk16 != -1){
+		inpsChk16.setAttribute('checked','checked');
+	}
+	var chk17 = str.search(inpsChk17.value);
+	if(chk17 != -1){
+		inpsChk17.setAttribute('checked','checked');
+	}
+	var chk18 = str.search(inpsChk18.value);
+	if(chk18 != -1){
+		inpsChk18.setAttribute('checked','checked');
+	}
+	var chk19 = str.search(inpsChk19.value);
+	if(chk19 != -1){
+		inpsChk19.setAttribute('checked','checked');
+	}
+</script>
+</block>

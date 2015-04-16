@@ -1,0 +1,57 @@
+<if condition="session('username') heq null">	
+	<script>
+		alert('干嘛呢这是！');
+		location.href="__MODULE__/Login/login";
+	</script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+管理员 >> 修改密码
+</block>
+<block name="right">
+<form action="__MODULE__/Manager/editPwdDo" onsubmit="return fun()" method="post">
+<input type="hidden" name="id" value="{$row['id']}">
+<table class="table table-hover table-striped">
+	<tr>
+		<td width="300" align="center">用户名：</td>
+		<td>{$row['username']}</td>
+	</tr>
+	<tr>
+		<td align="center">注册时间：</td>
+		<td>{$row['addtime']|date='Y-m-d H:i:s',###}</td>
+	</tr>
+	<tr>
+		<td align="center">输入新密码：</td>
+		<td><input id="newPassword" type="password" name="newPassword"></td>
+	</tr>
+	<tr>
+		<td align="center">确认新密码：</td>
+		<td><input id="rePassword" type="password" name="rePassword"></td>
+	</tr>
+	<tr>
+		<td colspan="2"><button id="btn" type="submit" class=" btn btn-primary col-md-2 col-md-offset-3">修改密码</button></td>
+	</tr>
+</table>
+</form>
+<script type="text/javascript">
+var flag;
+$("#btn").click(function(){
+	if($("input[name=newPassword]").val() != $("input[name=rePassword]").val()){
+		$("input[name=rePassword]").after("<span style='font-size:12px;color:red'>两次密码不一致</span>");
+		flag = false;
+	}else{
+		flag = true;
+	}
+	
+})
+$("input[name=rePassword]").focus(function(){
+		if($("input[name=newPassword]").val().length < 6){
+			alert("新密码不能少于6位");
+		}
+	})
+function fun(){
+	return flag;
+}
+	
+</script>
+</block>

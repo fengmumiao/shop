@@ -1,0 +1,109 @@
+<extend name="Public:layout" />
+<block name="title">商家管理-配货说明</block>
+<block name="goodsManage">
+ 	<li><a href="__MODULE__/Index/index"><i class="icon icon-home"></i> <span>商家操作控制台</span></a></li>
+ </block> 
+
+ <block name="goodsAction">
+	<li class="submenu active open">
+		<a href="#"><i class="icon icon-file"></i> <span>商品管理</span> <span class="label">5</span></a>
+		<ul>
+			<li><a href="__MODULE__/goodsAction/addGoods">添加商品</a></li>
+			<li class="active"><a href="__MODULE__/goodsAction/goodsMana">商品管理</a></li>
+			<!-- <li><a href="__MODULE__/goodsAction/shortGoods">缺货商品</a></li>
+			<li><a href="__MODULE__/goodsAction/payType">付款方式</a></li>
+			<li class="active"><a href="__MODULE__/goodsAction/goodsIntro">配货说明</a></li> -->
+		</ul>
+	</li>
+</block>
+
+<block name="content">
+<style type="text/css">
+	
+	.intro{
+		color:red;
+	}
+</style>
+<form action="saveIntro" method="post">
+<table class="table table-bordered table-hover">
+
+<tr align="center">
+	<td colspan="2">
+	<b style="color:green">{$data[0]['shopname']}</b></td>
+</tr>
+<tr>
+	<td colspan="2">　　　　　　　商品名称 　　　<kbd>{$good[0]['goods']}</kbd>  　　　　　商品编号 　　　<kbd>{$good[0]['goodsnumber']}</kbd>　　　　所属品牌 　　　<kbd>{$data[0]['brand']}</kbd></td>
+</tr>
+<input type="hidden" name="id" value={$good[0]['id']}>
+<!-- 遍历商品属性 -->
+<foreach name='goodsinfo' item='vo'>
+	<tr align="center">
+
+		<td colspan="2">
+		商品颜色:　<span class="intro">{$vo.color}</span>　
+		尺　　寸:　<span class="intro">{$vo.size}</span>　
+		数　　量:　<span class="intro">{$vo.num}</span>　
+		<a href="attrMana?id={$vo.id}" class="btn btn-warning" style="float:right">操作该颜色商品</a> 
+		<a href="delGoodsinfo?id={$vo.id}" class="btn btn-danger" style="float:right">删除该颜色商品</a>
+		
+		
+		</td>
+	</tr>
+
+</foreach>
+<foreach name='picarr' item='yy'>
+		<tr align="center"><td colspan="2">
+			
+			<foreach name='yy' item='qq'>
+			 
+	
+		<img src="__PUBLIC__/Home/images/carousel/{$qq}"  class="img-thumbnail img-circle" width="140px">
+			
+		</foreach>
+		</td></tr>
+		</foreach>
+
+
+<tr class="danger">
+	<td>商品属性</td>
+	<td>流行元素:　<span class="intro">{$goodsinfo[0]['popular']}</span>
+			 　　性　　别:<select>
+			 		<option value="1" class="sex">女</option>
+			 		<option value="0" class="sex">男</option>
+			 	  </select>
+	<br/>
+	商品款式:　<span class="intro">{$goodsinfo[0]['type']}</span>
+	 　　所属季节:<span class="intro">{$goodsinfo[0]['season']}</span>
+	<br>
+		　　
+	</td>
+</tr>
+<tr>
+	<td>价格</td>
+	<td>　市场价: <input type="text" name="price" placeholder="精确到俩位小数" value={$good[0]['price']}> 　打　折　价:<input type="text" name="discount" placeholder="精确到俩位小数" value={$good[0]['discount']}>
+	</td>
+</tr>
+<tr>
+	<td>商品简介</td>
+	<td>　
+		<textarea name='intro' cols="50">{$good[0]['intro']}</textarea>
+	</td>
+</tr>
+
+<tr>
+	<td>商品详情</td>
+	<td>
+		<textarea name="content" id="content"  style="width:80%;height:250px;visibility:hidden;" class="required">{$good[0]['content']}</textarea>
+	</td>
+</tr>
+<tr align="center">　　　　　　　
+	<td colspan="2" ><button type="submit" class="btn btn-success">确认修改</button>
+	<button type="reset" class="btn btn-warning">重置所有</button></td>
+</tr>
+</form>
+	
+</table>
+
+
+
+</block>

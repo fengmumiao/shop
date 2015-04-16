@@ -1,0 +1,59 @@
+<if condition="session('username') heq null">   
+    <script>
+        alert('干嘛呢这是！');
+        location.href="__MODULE__/Login/login";
+    </script>
+</if>
+<extend name="public:layout" />
+<block name="position">
+会员管理 >> 查看会员
+</block>
+<style type="text/css">
+
+</style>
+<block name="right">
+<style type="text/css">
+    tr{
+      height: 30px;
+    }
+    .main th,.main td{
+      text-align: center;
+    }
+</style>
+    <table width="100%" class="main table table-striped">
+        <thead>
+            <th>用户名</th>
+            <th>电话</th>
+            <th>性别</th>
+            <th>地址</th>
+            <th>操作</th>
+        </thead> 
+        <foreach name="row" item='vo'>
+            <switch name="vo['sex']">    
+                <case value="0"><php>$sex = '女';</php></case>    
+                <case value="1"><php>$sex = '男';</php></case>    
+                <default />
+            </switch>
+
+            <!-- 判断用户状态 -->
+            <switch name="vo['disable']">    
+                <case value="0"><php>$disable = '禁用';</php></case>    
+                <case value="1"><php>$disable = '启用';</php></case>    
+                <default />
+            </switch>
+            <tr>
+                <td><a href="__CONTROLLER__/editMessage?id={$vo.id}" target="rightFrame">{$vo.username}</a></td>
+                <td>{$vo.phone}</td>
+                <td><php>echo $sex;</php></td>
+                <td><textarea rows="1">{$vo.address}</textarea></td>
+                <td>
+                    <a href="__CONTROLLER__/editMessage?id={$vo.id}" target="rightFrame"><button class="btn btn-primary">修改</button></a>&nbsp;<a href="__CONTROLLER__/forbidden?id={$vo.id}&state={$vo.disable}" target="rightFrame"><button class="btn btn-warning"><php>echo $disable;</php></button></a>&nbsp;<a href="__CONTROLLER__/delete?id={$vo.id}"><button class="btn btn-danger">删除</button></a>
+                </td>
+            </tr>
+            
+        </foreach>
+        <tr>
+            <td colspan="6">{$page}</td>
+        </tr>
+    </table>
+</block>
