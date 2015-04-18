@@ -28,8 +28,7 @@
 <!--公共头部start-->
 <div class="yg_header" id="yg_header">
 <div id="smallBannerShow">
-      <div class="topani" style="background:url(/Public/Home/images/index/1234.jpg) no-repeat scroll center top rgba(0, 0, 0, 0)"></div>
-      <div class="top_banner" style="background:url(/Public/Home/images/index/7af3bb6b179c425f88c6a57220f3e4ba.jpg) center;cursor:pointer">
+     <div class="top_banner" style="background:url(/Public/Home/images/index/7af3bb6b179c425f88c6a57220f3e4ba.jpg) center;cursor:pointer">
 
       <a href="topics/1414051717819.html#ref=index&po=top_top1" target="_blank"></a></div>
 </div>

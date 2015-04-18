@@ -1,10 +1,4 @@
 /** Index 页面特效 startTime 2014/11/12 Yan*/
- 	/*头部特效*/
- 	$(function(){
- 		$('.topani').animate({'height':'400px'},2000,function(){
- 			$('.topani').animate({'height':'0px'},2000);
- 		});
- 	})
  	/*body特效*/
  	$(function(){
  		var time = setTimeout(function(){

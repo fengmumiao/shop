@@ -11,7 +11,7 @@ class LoginController extends Controller {
     public function index(){
   		if (!empty($_POST['email'])) {
   			$_SESSION[buyUser] = $_POST['email'];
-  			echo "<script>window.location.href='/Index'</script>";
+            $this->success('登录成功',U('Home/Index/index'),2);
   		}
     	$this -> assign('title','登录');
 		$this -> display();
@@ -43,7 +43,7 @@ class LoginController extends Controller {
 	}
 	public function ex(){
 		unset($_SESSION[buyUser]);
-		echo "<script>window.location.href='/Login'</script>";
+        $this->success('确认退出',U('Home/Login/index'),2);
 	}
 }
 

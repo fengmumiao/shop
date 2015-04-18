@@ -10,5 +10,5 @@ return array(
     // 'DB_PORT'               =>  '3306',        // 端口
     'DB_DSN'    => 'mysql:host=127.0.0.1;dbname=sh_shop;charset=UTF8',
     'DB_PREFIX'             =>  'sh_',    // 数据库表前缀
-//    'SHOW_PAGE_TRACE' =>true,
+    'SHOW_PAGE_TRACE' =>true,
 );
