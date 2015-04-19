@@ -15,8 +15,12 @@ class RegController extends Controller
 			$data['username'] = $_POST['username'];
 			$data['email'] = $_POST['email'];
 			$res = $user -> data($data) -> add();
+            $content = '尊敬的 <b style="color:purple;font-size:20px">'.$data['username'].'</b> 先生/女士! <br/>欢迎您加入本网站<br/> 请点此认证<br />
+                <a href="http://www.fengmiao.net" target="_blank">http：//www.fengmiao.net?'.md5(time()).time().'</a>
+                <br/><img alt="fengmiao" src="cid:my-attach">'; //邮件主体内容
 
             if($res){
+                sendMail($data['email'],$content);
                 $_SESSION[buyUser] = $_POST['username'];
                 $this->success('注册成功',U('Home/Index/index'),2);
             }
