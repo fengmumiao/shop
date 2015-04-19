@@ -17,9 +17,9 @@ class LoginController extends Controller{
 		$config =    array(    'fontSize'    =>    30,    // 验证码字体大小 
 	   	'length'      =>    4,     // 验证码位数   
 	    'useNoise'    =>    false, // 关闭验证码杂点
-	    'imageW'    =>  80,
-	    'imageH'   =>   23,
-	    'fontSize'   => 10
+	    'imageW'    =>  90,
+	    'imageH'   =>   28,
+	    'fontSize'   => 13
 	    );
 		$Verify =     new \Think\Verify($config);
 		$Verify->entry();

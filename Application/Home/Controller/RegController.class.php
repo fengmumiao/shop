@@ -3,17 +3,29 @@ namespace Home\Controller;
 use Think\Controller;
 class RegController extends Controller
 {
+
+
 	public function index(){
-		//添加用户	
+		//添加用户
+
+
 		if (!empty($_POST)) {
 			$user = M('buyuser');
 			$data['password'] = md5($_POST['password1']);
-			$data['username'] = $_POST['email'];
+			$data['username'] = $_POST['username'];
+			$data['email'] = $_POST['email'];
 			$res = $user -> data($data) -> add();
-			echo '<script>window.location.href = "/index.php/Login";</script>'; 
-		}	
-		$this -> assign('title','注册'); 
-		$this -> display();
+
+            if($res){
+                $_SESSION[buyUser] = $_POST['username'];
+                $this->success('注册成功',U('Home/Index/index'),2);
+            }
+
+		}else{
+            $this -> assign('title','注册');
+            $this -> display();
+        }
+
 	}
 	// 输出验证码
 	public function code(){

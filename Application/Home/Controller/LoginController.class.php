@@ -9,12 +9,14 @@ class LoginController extends Controller {
  * @copyright	sh工作室
  */
     public function index(){
-  		if (!empty($_POST['email'])) {
-  			$_SESSION[buyUser] = $_POST['email'];
+  		if (!empty($_POST['username'])) {
+  			$_SESSION[buyUser] = $_POST['username'];
             $this->success('登录成功',U('Home/Index/index'),2);
-  		}
-    	$this -> assign('title','登录');
-		$this -> display();
+  		}else{
+            $this -> assign('title','登录');
+            $this -> display();
+        }
+
 	}
 
 	public function Uname(){

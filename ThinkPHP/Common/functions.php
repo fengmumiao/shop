@@ -20,6 +20,57 @@
  * @param mixed $default 默认值
  * @return mixed
  */
+/********************邮件发送***************************/
+function sendMail($to) {
+    vendor('phpmailer.class#phpmailer');
+    $mail = new PHPMailer();
+    $mail->IsSMTP(); // 启用SMTP
+    $mail->CharSet  = "UTF-8"; //字符集
+    $mail->Encoding = "base64"; //编码方式
+
+    $mail->Username = "f1120428399@163.com";  //你的邮箱
+    $mail->Password = "fengqiang.123";  //你的密码
+    $mail->Subject = "你好"; //邮件标题
+
+    $mail->From = "f1120428399@163.com";  //发件人地址（也就是你的邮箱）
+    $mail->FromName = "Merlin";  //发件人姓名
+
+    $address = $to;//收件人email
+$mail->AddAddress($address, "亲");//添加收件人（地址，昵称）
+
+//$mail->AddAttachment('xx.xls','我的附件.xls'); // 添加附件,并指定名称
+$mail->IsHTML(true); //支持html格式内容
+$mail->AddEmbeddedImage("logo.jpg", "my-attach", "logo.jpg"); //设置邮件中的图片
+$mail->Body = '你好, <b>朋友</b>! <br/>这是一封来自<a href="http://www.helloweba.com" target="_blank">helloweba.com</a>的邮件！<br/><img alt="helloweba" src="cid:my-attach">'; //邮件主体内容
+
+
+    // 装配邮件服务器
+    /*if (C('MAIL_SMTP')) {
+        $mail->IsSMTP();
+    }
+    $mail->Host = C('MAIL_HOST');
+
+    $mail->SMTPAuth = C('MAIL_SMTPAUTH');
+    $mail->Username = C('MAIL_USERNAME');
+    $mail->Password = C('MAIL_PASSWORD');
+    $mail->SMTPSecure = C('MAIL_SECURE');
+    $mail->CharSet = C('MAIL_CHARSET');
+    // 装配邮件头信息
+    $mail->From = C('MAIL_USERNAME');
+    $mail->AddAddress($to);
+    $mail->FromName = '憨豆儿笑园';
+    $mail->IsHTML(C('MAIL_ISHTML'));
+    // 装配邮件正文信息
+    $mail->Subject = $subject;
+    $mail->Body = $content;
+    // 发送邮件
+    if (!$mail->Send()) {
+        return FALSE;
+    } else {
+        return TRUE;
+    }*/
+}
+
 function C($name=null, $value=null,$default=null) {
     static $_config = array();
     // 无参数时获取所有

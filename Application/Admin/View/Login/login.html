@@ -24,7 +24,7 @@ type=image src="__PUBLIC__/Admin/images/admin_menu.gif" name=IbtnEnter>
       <UL>
         <LI class="text">用户名：<BR>
           <DIV class="box1">
-            <INPUT class=smallInput id=LoginName style="WIDTH: 80px;margin-top:3px"" 
+            <INPUT class="smallInput" id="LoginName" style="WIDTH: 80px;margin-top:3px"
   name="user">
           </DIV>
         </LI>
@@ -34,11 +34,16 @@ type=image src="__PUBLIC__/Admin/images/admin_menu.gif" name=IbtnEnter>
   type=password name="pwd">
           </DIV>
         </LI>
-        <LI class="text"><span style="margin-left:-65px">验证码：</span><BR>
-          <DIV class="box4">
-            <INPUT name="chknumber" class=smallInput id="code" maxLength=5 size=8 style="margin-top:-26px"/>
-            &nbsp;<img src="__MODULE__/Login/code" id="safecode"/></DIV>
+        <LI class="text" style="width:120px;"><span>验证码：</span><BR>
+          <DIV class="box4" style="width:85px;">
+            <INPUT name="chknumber" class=smallInput id="code" maxLength=5 size=8 style="width:80px;margin-top:3px;"/>
+
+          </DIV>
+
+
+
         </LI>
+          <img src="__MODULE__/Login/code" id="safecode" />
       </UL>
     </DIV>
   </DIV>
