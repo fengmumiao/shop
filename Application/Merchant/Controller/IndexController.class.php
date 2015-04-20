@@ -35,7 +35,7 @@
 			$this -> display();
 
 		}
-		//开发组宣传
+		//小游戏
 		public function ourgroup(){
 			
 			$this -> display();
@@ -43,16 +43,17 @@
 
 		//新消息提醒
 
-		public function newmessage(){
-			
-			$model=M();
-			$list=$model->field('goods.state,orders.status,review.review,sale.username')->table('sh_goods goods,sh_orders orders,sh_review review,sh_saleuser sale')->where("sale.id=goods.shopid and sale.id=orders.shopid and review.color=sale.shopname")->select();
-			dump($list);
-			foreach($list as $key){
-   				echo $key['state'].$key['status'].$key['review'].'<br>';
-			}
+		public function Newmessage(){
 
-			$this->display();
+            $orders = M('Orders');
+            $order_count = $orders ->where('status = 0') -> count();
+
+            $review = M('Review');
+            $review_count = $review -> where('replay = ""') ->count();
+
+            $count_str='{"order_count":'.$order_count.',"review_count":'.$review_count.'}';
+
+            echo $count_str;
 		}
 	}
 ?>
