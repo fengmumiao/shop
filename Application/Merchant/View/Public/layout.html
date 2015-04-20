@@ -48,7 +48,7 @@
                 </li>
                 <li class="btn btn-inverse"><a title="" href="__MODULE__/LoginReg/logout"><i class="icon icon-share-alt"></i> <span class="text" style="color:#888;font-size:12px;">注销</span></a></li>
             </ul>
-            <div id="messagelist" style="width:180px;height:80px;background: #eee;display:none;">
+            <div id="messagelist" style="width:153px;height:80px;background: #eee;display:none;">
 
             </div>
             <input type="hidden" value="__MODULE__/Index/Newmessage" id = "Newmsgurl">
@@ -152,30 +152,28 @@ editor = K.create('textarea[name="content"]', {
                
         });
 
-    var Newmsgurl = $("#Newmsgurl").val();
-    $.post(Newmsgurl,function(data){
-        var msgcount = JSON.parse(data);
-        msgcount.review_count?msgcount.review_count:0;
-        msgcount.order_count?msgcount.order_count:0;
-        if(msgcount.review_count != 0 &&  msgcount.order_count !=0 ){
-            var msgmp3 = $("#msgmp3").val();
-            var html = '<embed src="'+msgmp3+'" width="0" height="0" loop="false"></embed>';
-            $("#user-nav").append(html);
-
-            setInterval(function(){ $("#shan").fadeOut(100).fadeIn(100); },1000);
-
-        }
-
-        var html ='<center><a href="/merchant.php/Merchant/Orders/effectiveOrder">您有<b style="color:red;line-height: 30px;">'+msgcount.order_count+'</b>个新订单待发货</a><br/>'+
-                  '<a href="/merchant.php/Merchant/Accessory/notMessage">您有<b style="color:red;line-height: 30px;">'+msgcount.review_count+'</b>条评论待回复</a></center>';
+var Newmsgurl = $("#Newmsgurl").val();
+$.post(Newmsgurl,function(data){
+    var msgcount = JSON.parse(data);
+    msgcount.review_count?msgcount.review_count:0;
+    msgcount.order_count?msgcount.order_count:0;
+    if(msgcount.review_count != 0 &&  msgcount.order_count !=0 ){
 
 
-        $("#messagelist").html(html);
-    })
+        setInterval(function(){ $("#shan").fadeOut(100).fadeIn(100); },1000);
 
-    $("#menu_messages").click(function(){
-        $("#messagelist").toggle();
-    })
+    }
+
+    var html ='<center><a href="/merchant.php/Merchant/Orders/effectiveOrder">您有<b style="color:red;line-height: 30px;">'+msgcount.order_count+'</b>个新订单待发货</a><br/>'+
+            '<a href="/merchant.php/Merchant/Accessory/notMessage">您有<b style="color:red;line-height: 30px;">'+msgcount.review_count+'</b>条评论待回复</a></center>';
+
+
+    $("#messagelist").html(html);
+})
+
+$("#menu_messages").click(function(){
+    $("#messagelist").toggle();
+})
 
 
 </script>
