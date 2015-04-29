@@ -46,13 +46,12 @@
 		public function Newmessage(){
 
             $orders = M('Orders');
-            $order_count = $orders ->where('status = 0') -> count();
-
+            $saleuser = M('Saleuser');
+            $sale_id = $saleuser -> field('id,shopname') -> where("username = '{$_SESSION['salename']}'") -> select();
+            $order_count = $orders ->where('status = 0 and shopid = '.$sale_id[0]['id']) -> count();
             $review = M('Review');
-            $review_count = $review -> where('replay = ""') ->count();
-
+            $review_count = $review -> where('replay = "" and color ="'.$sale_id[0]['shopname'].'"') ->count();
             $count_str='{"order_count":'.$order_count.',"review_count":'.$review_count.'}';
-
             echo $count_str;
 		}
 	}
