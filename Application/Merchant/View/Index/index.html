@@ -15,15 +15,19 @@
             var msgcount = JSON.parse(data);
             msgcount.review_count?msgcount.review_count:0;
             msgcount.order_count?msgcount.order_count:0;
-            if(msgcount.review_count != 0 &&  msgcount.order_count !=0 ){
+            if(msgcount.review_count != 0 ||  msgcount.order_count !=0 ){
                 var msgmp3 = $("#msgmp3").val();
                 var html = '<embed src="'+msgmp3+'" width="0" height="0" loop="false"></embed>';
                 $("#user-nav").append(html);
-
-
             }
 
-            
+            var html ='<center><a href="/merchant.php/Merchant/Orders/effectiveOrder">您有<b style="color:red;line-height: 30px;">'+msgcount.order_count+'</b>个新订单待发货</a><br/>'+
+                    '<a href="/merchant.php/Merchant/Accessory/notMessage">您有<b style="color:red;line-height: 30px;">'+msgcount.review_count+'</b>条评论待回复</a></center>';
+            $("#messagelist").html(html);
+        })
+
+        $("#menu_messages").click(function(){
+            $("#messagelist").toggle();
         })
     })
 </script>

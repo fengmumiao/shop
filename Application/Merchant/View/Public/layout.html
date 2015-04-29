@@ -157,7 +157,7 @@ $.post(Newmsgurl,function(data){
     var msgcount = JSON.parse(data);
     msgcount.review_count?msgcount.review_count:0;
     msgcount.order_count?msgcount.order_count:0;
-    if(msgcount.review_count != 0 &&  msgcount.order_count !=0 ){
+    if(msgcount.review_count != 0 || msgcount.order_count !=0 ){
 
 
         setInterval(function(){ $("#shan").fadeOut(100).fadeIn(100); },1000);
